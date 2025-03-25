@@ -1,4 +1,4 @@
-import Link from "next/link";
+import Link from 'next/link';
 
 export default function Header() {
   return (
@@ -24,7 +24,7 @@ export default function Header() {
         </div>
         <nav className="hidden md:flex gap-6">
           <Link
-            href="#features"
+            href="#Joa.io"
             className="text-sm font-medium hover:text-purple-600"
           >
             Características

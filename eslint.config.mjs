@@ -9,7 +9,11 @@ export default defineConfig([
     files: ['**/*.{js,mjs,cjs,ts,jsx,tsx}'],
     languageOptions: { globals: globals.browser },
     plugins: { js, react: pluginReact },
-    extends: ['js/recommended', 'plugin:react/recommended'],
+    extends: ['js/recommended'],
   },
   tseslint.configs.recommended,
+  {
+    // Note: there should be no other properties in this object
+    ignores: ['**/node_modules/**', '**/dist/**', '**/build/**', '**/.next/**'],
+  },
 ]);

@@ -1,21 +1,21 @@
-"use client";
+'use client';
 
-import type React from "react";
+import type React from 'react';
 
-import { useState } from "react";
+import { useState } from 'react';
 
 export default function UrlShortener() {
-  const [activeTab, setActiveTab] = useState("standard");
-  const [url, setUrl] = useState("");
-  const [customUrl, setCustomUrl] = useState("");
-  const [customPath, setCustomPath] = useState("");
-  const [shortenedUrl, setShortenedUrl] = useState("");
+  const [activeTab, setActiveTab] = useState('standard');
+  const [url, setUrl] = useState('');
+  const [customUrl, setCustomUrl] = useState('');
+  const [customPath, setCustomPath] = useState('');
+  const [shortenedUrl, setShortenedUrl] = useState('');
   const [copied, setCopied] = useState(false);
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     // This would connect to your actual URL shortening service
-    setShortenedUrl("https://Joa.io/a1b2c3");
+    setShortenedUrl('https://Joa.io/a1b2c3');
   };
 
   const handleCustomSubmit = (e: React.FormEvent) => {
@@ -45,28 +45,28 @@ export default function UrlShortener() {
           <div className="w-full max-w-3xl bg-white rounded-xl shadow-lg p-6 border">
             <div className="flex w-full mb-4">
               <button
-                onClick={() => setActiveTab("standard")}
+                onClick={() => setActiveTab('standard')}
                 className={`flex-1 py-2 text-center rounded-l-md ${
-                  activeTab === "standard"
-                    ? "bg-purple-600 text-white"
-                    : "bg-gray-100 text-gray-700 hover:bg-gray-200"
+                  activeTab === 'standard'
+                    ? 'bg-purple-600 text-white'
+                    : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
                 }`}
               >
                 Enlace estándar
               </button>
               <button
-                onClick={() => setActiveTab("custom")}
+                onClick={() => setActiveTab('custom')}
                 className={`flex-1 py-2 text-center rounded-r-md ${
-                  activeTab === "custom"
-                    ? "bg-purple-600 text-white"
-                    : "bg-gray-100 text-gray-700 hover:bg-gray-200"
+                  activeTab === 'custom'
+                    ? 'bg-purple-600 text-white'
+                    : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
                 }`}
               >
                 Enlace personalizado
               </button>
             </div>
 
-            {activeTab === "standard" ? (
+            {activeTab === 'standard' ? (
               <form onSubmit={handleSubmit} className="grid gap-4">
                 <div className="grid gap-2">
                   <input

@@ -1,4 +1,4 @@
-import FeatureCard from "./feature-card";
+import FeatureCard from './feature-card';
 
 export default function Features() {
   const features = [
@@ -20,11 +20,11 @@ export default function Features() {
           <path d="m13 14-2 2h-2v2l-2 2"></path>
         </svg>
       ),
-      title: "Analítica de Enlaces",
+      title: 'Analítica de Enlaces',
       description:
-        "Rastrea clics, datos geográficos, referencias, dispositivos y más",
+        'Rastrea clics, datos geográficos, referencias, dispositivos y más',
       content:
-        "Obtén información detallada sobre quién está haciendo clic en tus enlaces y de dónde provienen.",
+        'Obtén información detallada sobre quién está haciendo clic en tus enlaces y de dónde provienen.',
     },
     {
       icon: (
@@ -44,11 +44,11 @@ export default function Features() {
           <path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path>
         </svg>
       ),
-      title: "URLs Personalizadas",
+      title: 'URLs Personalizadas',
       description:
-        "Crea enlaces memorables y personalizados con dominios propios",
+        'Crea enlaces memorables y personalizados con dominios propios',
       content:
-        "Usa tu propio dominio para crear enlaces cortos personalizados que refuercen tu identidad.",
+        'Usa tu propio dominio para crear enlaces cortos personalizados que refuercen tu identidad.',
     },
     {
       icon: (
@@ -69,10 +69,10 @@ export default function Features() {
           <rect x="14" y="7" width="3" height="5"></rect>
         </svg>
       ),
-      title: "Códigos QR",
-      description: "Genera códigos QR para tus enlaces acortados al instante",
+      title: 'Códigos QR',
+      description: 'Genera códigos QR para tus enlaces acortados al instante',
       content:
-        "Conecta experiencias offline y online con códigos QR escaneables para tus enlaces.",
+        'Conecta experiencias offline y online con códigos QR escaneables para tus enlaces.',
     },
     {
       icon: (
@@ -92,10 +92,10 @@ export default function Features() {
           <path d="M10 2c1 .5 2 2 2 5" />
         </svg>
       ),
-      title: "Páginas de Bio",
-      description: "Crea una página de destino con múltiples enlaces",
+      title: 'Páginas de Bio',
+      description: 'Crea una página de destino con múltiples enlaces',
       content:
-        "Comparte múltiples enlaces con una sola URL, perfecto para perfiles en redes sociales.",
+        'Comparte múltiples enlaces con una sola URL, perfecto para perfiles en redes sociales.',
     },
     {
       icon: (
@@ -115,11 +115,11 @@ export default function Features() {
           <path d="m9 12 2 2 4-4" />
         </svg>
       ),
-      title: "Acceso a la API",
+      title: 'Acceso a la API',
       description:
-        "Integra el acortamiento de URLs en tus aplicaciones y flujos de trabajo",
+        'Integra el acortamiento de URLs en tus aplicaciones y flujos de trabajo',
       content:
-        "Usa nuestra potente API para crear, gestionar y rastrear enlaces cortos de forma programada.",
+        'Usa nuestra potente API para crear, gestionar y rastrear enlaces cortos de forma programada.',
     },
     {
       icon: (
@@ -139,11 +139,11 @@ export default function Features() {
           <path d="m9 12 2 2 4-4" />
         </svg>
       ),
-      title: "Seguridad de Enlaces",
+      title: 'Seguridad de Enlaces',
       description:
-        "Protección con contraseña y fechas de expiración para enlaces",
+        'Protección con contraseña y fechas de expiración para enlaces',
       content:
-        "Controla quién puede acceder a tus enlaces y por cuánto tiempo con funciones avanzadas de seguridad.",
+        'Controla quién puede acceder a tus enlaces y por cuánto tiempo con funciones avanzadas de seguridad.',
     },
   ];
 
@@ -165,7 +165,7 @@ export default function Features() {
         <div className="mx-auto grid justify-center gap-4 sm:grid-cols-2 md:max-w-[64rem] md:grid-cols-3 lg:gap-8 mt-8">
           {features.map((feature, index) => (
             <FeatureCard
-              key={index}
+              key={feature.title + index}
               icon={feature.icon}
               title={feature.title}
               description={feature.description}

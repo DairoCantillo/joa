@@ -1,15 +1,15 @@
-"use client";
+'use client';
 
-import { useState } from "react";
-import PricingCard from "./pricing-card";
+import { useState } from 'react';
+import PricingCard from './pricing-card';
 
 export default function Pricing() {
-  const [billingPeriod, setBillingPeriod] = useState("monthly");
+  const [billingPeriod, setBillingPeriod] = useState('monthly');
 
   const plans = {
     monthly: [
       {
-        name: "Free",
+        name: 'Free',
         icon: (
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -29,18 +29,18 @@ export default function Pricing() {
             <path d="M12 9.01l.01-.011"></path>
           </svg>
         ),
-        price: "$0",
-        period: "mes",
-        description: "Perfecto para probar nuestro servicio.",
+        price: '$0',
+        period: 'mes',
+        description: 'Perfecto para probar nuestro servicio.',
         features: [
-          { included: true, text: "Hasta 50 enlaces" },
-          { included: true, text: "Basic analytics" },
-          { included: true, text: "Análisis básico" },
-          { included: false, text: "Dominios personalizados" },
+          { included: true, text: 'Hasta 50 enlaces' },
+          { included: true, text: 'Basic analytics' },
+          { included: true, text: 'Análisis básico' },
+          { included: false, text: 'Dominios personalizados' },
         ],
       },
       {
-        name: "Pro",
+        name: 'Pro',
         icon: (
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -63,20 +63,20 @@ export default function Pricing() {
             <path d="M19.7 14a6.9 6.9 0 0 0 .3-2V5l-8-3-8 3v7c0 6 8 10 8 10a20.3 20.3 0 0 0 5.7-4.2"></path>
           </svg>
         ),
-        price: "$12",
-        period: "mes",
-        description: "Para profesionales y equipos pequeños",
+        price: '$12',
+        period: 'mes',
+        description: 'Para profesionales y equipos pequeños',
         features: [
-          { included: true, text: "Enlaces ilimitados" },
-          { included: true, text: "Análisis avanzado" },
-          { included: true, text: "Códigos QR personalizados" },
-          { included: true, text: "1 dominio personalizado" },
-          { included: true, text: "Protección con contraseña" },
+          { included: true, text: 'Enlaces ilimitados' },
+          { included: true, text: 'Análisis avanzado' },
+          { included: true, text: 'Códigos QR personalizados' },
+          { included: true, text: '1 dominio personalizado' },
+          { included: true, text: 'Protección con contraseña' },
         ],
         popular: true,
       },
       {
-        name: "Business",
+        name: 'Business',
         icon: (
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -95,21 +95,21 @@ export default function Pricing() {
             <circle cx="17.5" cy="17.5" r="3.5"></circle>
           </svg>
         ),
-        price: "$29",
-        period: "mes",
-        description: "Para empresas con necesidades avanzadas",
+        price: '$29',
+        period: 'mes',
+        description: 'Para empresas con necesidades avanzadas',
         features: [
-          { included: true, text: "Todo en Pro" },
-          { included: true, text: "Hasta 5 dominios personalizados" },
-          { included: true, text: "Colaboración en equipo" },
-          { included: true, text: "Acceso a la API" },
-          { included: true, text: "Soporte prioritario" },
+          { included: true, text: 'Todo en Pro' },
+          { included: true, text: 'Hasta 5 dominios personalizados' },
+          { included: true, text: 'Colaboración en equipo' },
+          { included: true, text: 'Acceso a la API' },
+          { included: true, text: 'Soporte prioritario' },
         ],
       },
     ],
     annually: [
       {
-        name: "Gratis",
+        name: 'Gratis',
         icon: (
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -129,18 +129,18 @@ export default function Pricing() {
             <path d="M12 9.01l.01-.011"></path>
           </svg>
         ),
-        price: "$0",
-        period: "year",
-        description: "Perfect for trying out our service",
+        price: '$0',
+        period: 'year',
+        description: 'Perfect for trying out our service',
         features: [
-          { included: true, text: "Up to 50 links" },
-          { included: true, text: "Basic analytics" },
-          { included: true, text: "Standard QR codes" },
-          { included: false, text: "Custom domains" },
+          { included: true, text: 'Up to 50 links' },
+          { included: true, text: 'Basic analytics' },
+          { included: true, text: 'Standard QR codes' },
+          { included: false, text: 'Custom domains' },
         ],
       },
       {
-        name: "Pro",
+        name: 'Pro',
         icon: (
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -163,20 +163,20 @@ export default function Pricing() {
             <path d="M19.7 14a6.9 6.9 0 0 0 .3-2V5l-8-3-8 3v7c0 6 8 10 8 10a20.3 20.3 0 0 0 5.7-4.2"></path>
           </svg>
         ),
-        price: "$115",
-        period: "year",
-        description: "For professionals and small teams",
+        price: '$115',
+        period: 'year',
+        description: 'For professionals and small teams',
         features: [
-          { included: true, text: "Unlimited links" },
-          { included: true, text: "Advanced analytics" },
-          { included: true, text: "Custom QR codes" },
-          { included: true, text: "1 custom domain" },
-          { included: true, text: "Password protection" },
+          { included: true, text: 'Unlimited links' },
+          { included: true, text: 'Advanced analytics' },
+          { included: true, text: 'Custom QR codes' },
+          { included: true, text: '1 custom domain' },
+          { included: true, text: 'Password protection' },
         ],
         popular: true,
       },
       {
-        name: "Negocios",
+        name: 'Negocios',
         icon: (
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -195,15 +195,15 @@ export default function Pricing() {
             <circle cx="17.5" cy="17.5" r="3.5"></circle>
           </svg>
         ),
-        price: "$279",
-        period: "year",
-        description: "For businesses with advanced needs",
+        price: '$279',
+        period: 'year',
+        description: 'For businesses with advanced needs',
         features: [
-          { included: true, text: "Everything in Pro" },
-          { included: true, text: "Up to 5 custom domains" },
-          { included: true, text: "Team collaboration" },
-          { included: true, text: "API access" },
-          { included: true, text: "Priority support" },
+          { included: true, text: 'Everything in Pro' },
+          { included: true, text: 'Up to 5 custom domains' },
+          { included: true, text: 'Team collaboration' },
+          { included: true, text: 'API access' },
+          { included: true, text: 'Priority support' },
         ],
       },
     ],
@@ -239,21 +239,21 @@ export default function Pricing() {
           <div className="flex justify-center mb-8">
             <div className="inline-flex p-1 rounded-lg bg-gray-100">
               <button
-                onClick={() => setBillingPeriod("monthly")}
+                onClick={() => setBillingPeriod('monthly')}
                 className={`px-6 py-2 text-sm rounded-md ${
-                  billingPeriod === "monthly"
-                    ? "bg-white text-purple-600 shadow-sm"
-                    : "text-gray-600 hover:text-gray-900"
+                  billingPeriod === 'monthly'
+                    ? 'bg-white text-purple-600 shadow-sm'
+                    : 'text-gray-600 hover:text-gray-900'
                 }`}
               >
                 Mensual
               </button>
               <button
-                onClick={() => setBillingPeriod("annually")}
+                onClick={() => setBillingPeriod('annually')}
                 className={`px-6 py-2 text-sm rounded-md ${
-                  billingPeriod === "annually"
-                    ? "bg-white text-purple-600 shadow-sm"
-                    : "text-gray-600 hover:text-gray-900"
+                  billingPeriod === 'annually'
+                    ? 'bg-white text-purple-600 shadow-sm'
+                    : 'text-gray-600 hover:text-gray-900'
                 }`}
               >
                 Anualmente (Ahorra un 20%)
@@ -262,9 +262,9 @@ export default function Pricing() {
           </div>
 
           <div className="mx-auto grid max-w-screen-lg gap-5 sm:grid-cols-2 lg:grid-cols-3">
-            {plans[billingPeriod as keyof typeof plans].map((plan, index) => (
+            {plans[billingPeriod as keyof typeof plans].map((plan) => (
               <PricingCard
-                key={index}
+                key={plan.name}
                 name={plan.name}
                 icon={plan.icon}
                 price={plan.price}

@@ -1,10 +1,10 @@
-import type React from "react";
-type FeatureCardProps = {
+import type React from 'react';
+type FeatureCardProps = Readonly<{
   icon: React.ReactNode;
   title: string;
   description: string;
   content: string;
-};
+}>;
 
 export default function FeatureCard({
   icon,

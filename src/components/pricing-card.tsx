@@ -1,5 +1,5 @@
-import type React from "react";
-type PricingCardProps = {
+import type React from 'react';
+type PricingCardProps = Readonly<{
   name: string;
   icon: React.ReactNode;
   price: string;
@@ -10,7 +10,7 @@ type PricingCardProps = {
     text: string;
   }>;
   popular?: boolean;
-};
+}>;
 
 export default function PricingCard({
   name,
@@ -23,10 +23,10 @@ export default function PricingCard({
 }: PricingCardProps) {
   return (
     <div
-      className={`flex flex-col overflow-hidden group hover:shadow-lg transition-all duration-200 rounded-lg ${popular ? "border-purple-500 border-2" : "border border-gray-200"}`}
+      className={`flex flex-col overflow-hidden group hover:shadow-lg transition-all duration-200 rounded-lg ${popular ? 'border-purple-500 border-2' : 'border border-gray-200'}`}
     >
       <div
-        className={`h-2 w-full ${popular ? "bg-purple-500" : "bg-gray-200"}`}
+        className={`h-2 w-full ${popular ? 'bg-purple-500' : 'bg-gray-200'}`}
       ></div>
       {popular && (
         <div className="absolute top-0 right-0">
@@ -51,7 +51,7 @@ export default function PricingCard({
       <div className="flex-1 p-6 pt-0">
         <ul className="space-y-3 text-sm">
           {features.map((feature, index) => (
-            <li key={index} className="flex items-center">
+            <li key={feature.text + index} className="flex items-center">
               {feature.included ? (
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
@@ -84,7 +84,7 @@ export default function PricingCard({
                   <path d="m6 6 12 12" />
                 </svg>
               )}
-              <span className={feature.included ? "" : "text-gray-400"}>
+              <span className={feature.included ? '' : 'text-gray-400'}>
                 {feature.text}
               </span>
             </li>
@@ -95,8 +95,8 @@ export default function PricingCard({
         <button
           className={`w-full py-2 px-4 rounded-md transition-colors ${
             popular
-              ? "bg-purple-600 text-white hover:bg-purple-700"
-              : "bg-white text-gray-700 border border-gray-300 hover:bg-gray-50"
+              ? 'bg-purple-600 text-white hover:bg-purple-700'
+              : 'bg-white text-gray-700 border border-gray-300 hover:bg-gray-50'
           } focus:outline-none focus:ring-2 focus:ring-purple-500 focus:ring-offset-2`}
         >
           Get Started
