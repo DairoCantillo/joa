@@ -1,11 +1,11 @@
 import Link from 'next/link';
 import type { Metadata } from 'next';
-import LoginForm from '@components/login-form';
+import LoginForm from '@/components/login-form';
 
 export const metadata: Metadata = {
   title: 'Iniciar Sesión | Short.ly',
   description:
-    'Inicia sesión en tu cuenta de Short.ly para administrar tus URLs acortadas',
+    'Inicia sesión en tu cuenta de Short.ly para gestionar tus URLs acortadas',
 };
 
 export default function LoginPage() {

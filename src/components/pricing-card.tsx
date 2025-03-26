@@ -1,5 +1,11 @@
+'use client';
+
 import type React from 'react';
-type PricingCardProps = Readonly<{
+
+import { motion } from 'framer-motion';
+import { Check, X } from 'lucide-react';
+
+type PricingCardProps = {
   name: string;
   icon: React.ReactNode;
   price: string;
@@ -10,7 +16,9 @@ type PricingCardProps = Readonly<{
     text: string;
   }>;
   popular?: boolean;
-}>;
+  color: 'purple' | 'pink' | 'blue';
+  index: number;
+};
 
 export default function PricingCard({
   name,
@@ -20,88 +28,109 @@ export default function PricingCard({
   description,
   features,
   popular = false,
+  color,
+  index,
 }: PricingCardProps) {
+  const colorClasses = {
+    purple: 'from-pastel-purple to-pastel-purple/70',
+    pink: 'from-pastel-pink to-pastel-pink/70',
+    blue: 'from-pastel-blue to-pastel-blue/70',
+  };
+
+  const colorText = {
+    purple: 'text-pastel-purple',
+    pink: 'text-pastel-pink',
+    blue: 'text-pastel-blue',
+  };
+
   return (
-    <div
-      className={`flex flex-col overflow-hidden group hover:shadow-lg transition-all duration-200 rounded-lg ${popular ? 'border-purple-500 border-2' : 'border border-gray-200'}`}
+    <motion.article
+      initial={{ opacity: 0, y: 20 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.5, delay: index * 0.1 }}
+      viewport={{ once: true }}
+      className="flex flex-col overflow-hidden group hover:shadow-xl transition-all duration-300 rounded-xl relative"
     >
       <div
-        className={`h-2 w-full ${popular ? 'bg-purple-500' : 'bg-gray-200'}`}
+        className="absolute -inset-0.5 bg-gradient-to-r from-pastel-purple via-pastel-pink to-pastel-blue rounded-xl opacity-20 blur-sm group-hover:opacity-40 transition-opacity"
+        aria-hidden="true"
       ></div>
-      {popular && (
-        <div className="absolute top-0 right-0">
-          <div className="text-xs font-bold uppercase bg-purple-500 text-white py-1 px-3 rounded-bl-lg">
-            Popular
+      <div className="relative bg-white dark:bg-gray-800 rounded-xl flex flex-col h-full">
+        <div
+          className={`h-2 w-full bg-gradient-to-r ${colorClasses[color]}`}
+          aria-hidden="true"
+        ></div>
+        {popular && (
+          <div className="absolute top-0 right-0">
+            <div className="text-xs font-bold uppercase bg-gradient-to-r from-pastel-purple to-pastel-pink text-white py-1 px-3 rounded-bl-lg">
+              Popular
+            </div>
           </div>
-        </div>
-      )}
-      <div className="p-6">
-        <div className="flex items-center gap-2">
-          {icon}
-          <h3 className="text-xl font-bold">{name}</h3>
-        </div>
-        <div className="mt-4 flex items-baseline text-5xl font-bold">
-          {price}
-          <span className="ml-1 text-lg font-medium text-gray-500">
-            /{period}
-          </span>
-        </div>
-        <p className="pt-4 text-gray-500">{description}</p>
-      </div>
-      <div className="flex-1 p-6 pt-0">
-        <ul className="space-y-3 text-sm">
-          {features.map((feature, index) => (
-            <li key={feature.text + index} className="flex items-center">
-              {feature.included ? (
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  width="24"
-                  height="24"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  stroke="currentColor"
-                  strokeWidth="2"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  className="mr-2 h-4 w-4 text-purple-500"
+        )}
+        <header className="p-6">
+          <div className="flex items-center gap-2">
+            <div
+              className={`p-2 rounded-full bg-${color === 'purple' ? 'pastel-purple' : color === 'pink' ? 'pastel-pink' : 'pastel-blue'}/10`}
+              aria-hidden="true"
+            >
+              {icon}
+            </div>
+            <h3 className="text-xl font-bold text-gray-800 dark:text-gray-200">
+              {name}
+            </h3>
+          </div>
+          <div className="mt-4 flex items-baseline">
+            <span className="text-5xl font-bold gradient-text">{price}</span>
+            <span className="ml-1 text-lg font-medium text-gray-500 dark:text-gray-400">
+              /{period}
+            </span>
+          </div>
+          <p className="pt-4 text-gray-600 dark:text-gray-400">{description}</p>
+        </header>
+        <div className="flex-1 p-6 pt-0">
+          <ul
+            className="space-y-3 text-sm"
+            aria-label={`Características del plan ${name}`}
+          >
+            {features.map((feature, index) => (
+              <li key={index} className="flex items-center">
+                {feature.included ? (
+                  <Check
+                    className={`mr-2 h-4 w-4 ${colorText[color]}`}
+                    aria-hidden="true"
+                  />
+                ) : (
+                  <X
+                    className="mr-2 h-4 w-4 text-gray-400"
+                    aria-hidden="true"
+                  />
+                )}
+                <span
+                  className={
+                    feature.included
+                      ? 'text-gray-700 dark:text-gray-300'
+                      : 'text-gray-500 dark:text-gray-400'
+                  }
                 >
-                  <polyline points="20 6 9 17 4 12"></polyline>
-                </svg>
-              ) : (
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  width="24"
-                  height="24"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  stroke="currentColor"
-                  strokeWidth="2"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  className="mr-2 h-4 w-4 text-gray-400"
-                >
-                  <path d="M18 6 6 18" />
-                  <path d="m6 6 12 12" />
-                </svg>
-              )}
-              <span className={feature.included ? '' : 'text-gray-400'}>
-                {feature.text}
-              </span>
-            </li>
-          ))}
-        </ul>
+                  {feature.text}
+                </span>
+              </li>
+            ))}
+          </ul>
+        </div>
+        <footer className="p-6 pt-0">
+          <a
+            href="#signup"
+            className={`w-full py-3 px-4 rounded-xl transition-all ${
+              popular
+                ? 'bg-gradient-to-r from-pastel-purple to-pastel-pink text-white shadow-md hover:shadow-lg'
+                : `bg-${color === 'purple' ? 'pastel-purple' : color === 'pink' ? 'pastel-pink' : 'pastel-blue'}/10 ${colorText[color]} hover:bg-${color === 'purple' ? 'pastel-purple' : color === 'pink' ? 'pastel-pink' : 'pastel-blue'}/20`
+            } focus:outline-none focus:ring-2 focus:ring-${color === 'purple' ? 'pastel-purple' : color === 'pink' ? 'pastel-pink' : 'pastel-blue'} focus:ring-offset-2 inline-block text-center`}
+          >
+            Comenzar
+          </a>
+        </footer>
       </div>
-      <div className="p-6 pt-0">
-        <button
-          className={`w-full py-2 px-4 rounded-md transition-colors ${
-            popular
-              ? 'bg-purple-600 text-white hover:bg-purple-700'
-              : 'bg-white text-gray-700 border border-gray-300 hover:bg-gray-50'
-          } focus:outline-none focus:ring-2 focus:ring-purple-500 focus:ring-offset-2`}
-        >
-          Get Started
-        </button>
-      </div>
-    </div>
+    </motion.article>
   );
 }

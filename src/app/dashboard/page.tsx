@@ -3,7 +3,7 @@ import Link from 'next/link';
 
 export const metadata: Metadata = {
   title: 'Panel de Control | Short.ly',
-  description: 'Administra tus URLs acortadas',
+  description: 'Gestiona tus URLs acortadas',
 };
 
 export default function DashboardPage() {
@@ -63,7 +63,7 @@ export default function DashboardPage() {
           <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
             <div className="rounded-lg border bg-card p-6 shadow-sm">
               <div className="flex items-center justify-between">
-                <h3 className="text-lg font-medium">Total de Enlaces</h3>
+                <h3 className="text-lg font-medium">Enlaces Totales</h3>
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   width="24"
@@ -87,7 +87,7 @@ export default function DashboardPage() {
             </div>
             <div className="rounded-lg border bg-card p-6 shadow-sm">
               <div className="flex items-center justify-between">
-                <h3 className="text-lg font-medium">Total de Clics</h3>
+                <h3 className="text-lg font-medium">Clics Totales</h3>
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   width="24"
@@ -104,14 +104,14 @@ export default function DashboardPage() {
                   <path d="M3 10.4V21h18V10.4"></path>
                 </svg>
               </div>
-              <p className="text-3xl font-bold mt-2">1,234</p>
+              <p className="text-3xl font-bold mt-2">1.234</p>
               <p className="text-sm text-muted-foreground mt-1">
                 +21% desde el mes pasado
               </p>
             </div>
             <div className="rounded-lg border bg-card p-6 shadow-sm">
               <div className="flex items-center justify-between">
-                <h3 className="text-lg font-medium">Enlace Destacado</h3>
+                <h3 className="text-lg font-medium">Enlace Principal</h3>
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   width="24"
@@ -152,7 +152,7 @@ export default function DashboardPage() {
                   <thead>
                     <tr className="bg-muted/50">
                       <th className="px-4 py-3 text-left text-sm font-medium text-muted-foreground">
-                        URL Acortada
+                        URL Corta
                       </th>
                       <th className="px-4 py-3 text-left text-sm font-medium text-muted-foreground">
                         URL Original
@@ -171,28 +171,28 @@ export default function DashboardPage() {
                         short.ly/lanzamiento-producto
                       </td>
                       <td className="px-4 py-3 text-sm truncate max-w-[200px]">
-                        https://example.com/detalles-lanzamiento-nuevo-producto
+                        https://ejemplo.com/detalles-e-informacion-de-nuestro-nuevo-lanzamiento-de-producto
                       </td>
                       <td className="px-4 py-3 text-sm">543</td>
-                      <td className="px-4 py-3 text-sm">Hace 2 días</td>
+                      <td className="px-4 py-3 text-sm">hace 2 días</td>
                     </tr>
                     <tr className="border-t">
                       <td className="px-4 py-3 text-sm">
-                        short.ly/venta-verano
+                        short.ly/oferta-verano
                       </td>
                       <td className="px-4 py-3 text-sm truncate max-w-[200px]">
-                        https://example.com/promocion-verano-2023
+                        https://ejemplo.com/promocion-verano-2023
                       </td>
                       <td className="px-4 py-3 text-sm">321</td>
-                      <td className="px-4 py-3 text-sm">Hace 5 días</td>
+                      <td className="px-4 py-3 text-sm">hace 5 días</td>
                     </tr>
                     <tr className="border-t">
                       <td className="px-4 py-3 text-sm">short.ly/webinar</td>
                       <td className="px-4 py-3 text-sm truncate max-w-[200px]">
-                        https://example.com/registro-serie-webinars
+                        https://ejemplo.com/registrate-para-proxima-serie-de-webinars
                       </td>
                       <td className="px-4 py-3 text-sm">210</td>
-                      <td className="px-4 py-3 text-sm">Hace 1 semana</td>
+                      <td className="px-4 py-3 text-sm">hace 1 semana</td>
                     </tr>
                   </tbody>
                 </table>

@@ -1,6 +1,6 @@
 import Link from 'next/link';
 import type { Metadata } from 'next';
-import RegisterForm from '@components/register-form';
+import RegisterForm from '@/components/register-form';
 
 export const metadata: Metadata = {
   title: 'Registro | Short.ly',
@@ -34,7 +34,7 @@ export default function RegisterPage() {
               </Link>
             </div>
             <h1 className="text-2xl font-bold tracking-tight">
-              Crea una cuenta
+              Crear una cuenta
             </h1>
             <p className="text-muted-foreground">
               Ingresa tus datos para comenzar
@@ -43,7 +43,7 @@ export default function RegisterPage() {
           <RegisterForm />
           <div className="mt-4 text-center text-sm">
             <p className="text-muted-foreground">
-              ¿Ya tienes una cuenta?
+              ¿Ya tienes una cuenta?{' '}
               <Link
                 href="/login"
                 className="font-medium text-primary hover:underline"
