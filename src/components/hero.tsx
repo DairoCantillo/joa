@@ -29,7 +29,7 @@ export default function HeroSection() {
           </div>
           <div className="flex items-center justify-center">
             <Image
-              src="/placeholder.svg?height=400&width=500"
+              src="/bg-short-url.png"
               width={500}
               height={400}
               alt="URL Shortener Dashboard"

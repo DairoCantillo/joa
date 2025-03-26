@@ -31,11 +31,11 @@ export default function UrlShortener() {
   };
 
   return (
-    <section className="w-full py-8 md:py-12 bg-gradient-to-r from-purple-100 via-white to-purple-100">
-      <div className="container mx-auto px-4">
+    <section className="w-full py-8 md:py-12 bg-[url(/bg-short-url.png)] h-[50vh] bg-cover bg-center">
+      <div className="container mx-auto px-4 py-12">
         <div className="mx-auto flex max-w-[64rem] flex-col items-center justify-center gap-4">
-          <h2 className="text-2xl font-bold tracking-tighter sm:text-3xl md:text-4xl text-center">
-            Acortar su URL
+          <h2 className="text-3xl md:text-4xl font-bold tracking-tight text-center bg-clip-text text-transparent bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500">
+            Convierte enlaces largos en mágicamente cortos
           </h2>
           <p className="text-gray-500 text-center md:text-lg mb-2">
             Pegue su URL larga a continuación y obtenga un enlace corto al
