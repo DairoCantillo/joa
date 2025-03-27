@@ -16,8 +16,19 @@ const config: Config = {
         '2xl': '1400px',
       },
     },
+    colors: {
+      'pastel-pink': '#e78ad0',
+      pastel: {
+        pink: '#e78ad0',
+        purple: '#c77ddb',
+        mint: '#a4e6a4',
+        yellow: '#f3e07e',
+        blue: '#8bd7e8',
+      },
+    },
     extend: {
       colors: {
+        'pastel-pink': '#e78ad0',
         border: 'hsl(var(--border))',
         input: 'hsl(var(--input))',
         ring: 'hsl(var(--ring))',

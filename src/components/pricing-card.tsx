@@ -5,7 +5,7 @@ import type React from 'react';
 import { motion } from 'framer-motion';
 import { Check, X } from 'lucide-react';
 
-type PricingCardProps = {
+type PricingCardProps = Readonly<{
   name: string;
   icon: React.ReactNode;
   price: string;
@@ -18,7 +18,7 @@ type PricingCardProps = {
   popular?: boolean;
   color: 'purple' | 'pink' | 'blue';
   index: number;
-};
+}>;
 
 export default function PricingCard({
   name,
@@ -28,7 +28,7 @@ export default function PricingCard({
   description,
   features,
   popular = false,
-  color,
+  color = 'purple',
   index,
 }: PricingCardProps) {
   const colorClasses = {
@@ -42,6 +42,15 @@ export default function PricingCard({
     pink: 'text-pastel-pink',
     blue: 'text-pastel-blue',
   };
+  //chambonada, toca mejorarlo despues
+  let colorAsign: string;
+  if (color === 'purple') {
+    colorAsign = 'pastel-purple';
+  } else if (color === 'pink') {
+    colorAsign = 'pastel-pink';
+  } else {
+    colorAsign = 'pastel-blue';
+  }
 
   return (
     <motion.article
@@ -52,7 +61,7 @@ export default function PricingCard({
       className="flex flex-col overflow-hidden group hover:shadow-xl transition-all duration-300 rounded-xl relative"
     >
       <div
-        className="absolute -inset-0.5 bg-gradient-to-r from-pastel-purple via-pastel-pink to-pastel-blue rounded-xl opacity-20 blur-sm group-hover:opacity-40 transition-opacity"
+        className="absolute -inset-0.5 bg-gradient-to-r from-pastel-purple via-pastel-pink to-pastel-blue rounded-xl opacity-20 group-hover:opacity-40 transition-opacity"
         aria-hidden="true"
       ></div>
       <div className="relative bg-white dark:bg-gray-800 rounded-xl flex flex-col h-full">
@@ -70,7 +79,7 @@ export default function PricingCard({
         <header className="p-6">
           <div className="flex items-center gap-2">
             <div
-              className={`p-2 rounded-full bg-${color === 'purple' ? 'pastel-purple' : color === 'pink' ? 'pastel-pink' : 'pastel-blue'}/10`}
+              className={`p-2 rounded-full bg-${colorAsign}/10`}
               aria-hidden="true"
             >
               {icon}
@@ -92,8 +101,8 @@ export default function PricingCard({
             className="space-y-3 text-sm"
             aria-label={`Características del plan ${name}`}
           >
-            {features.map((feature, index) => (
-              <li key={index} className="flex items-center">
+            {features.map((feature) => (
+              <li key={feature.text} className="flex items-center">
                 {feature.included ? (
                   <Check
                     className={`mr-2 h-4 w-4 ${colorText[color]}`}
@@ -124,8 +133,8 @@ export default function PricingCard({
             className={`w-full py-3 px-4 rounded-xl transition-all ${
               popular
                 ? 'bg-gradient-to-r from-pastel-purple to-pastel-pink text-white shadow-md hover:shadow-lg'
-                : `bg-${color === 'purple' ? 'pastel-purple' : color === 'pink' ? 'pastel-pink' : 'pastel-blue'}/10 ${colorText[color]} hover:bg-${color === 'purple' ? 'pastel-purple' : color === 'pink' ? 'pastel-pink' : 'pastel-blue'}/20`
-            } focus:outline-none focus:ring-2 focus:ring-${color === 'purple' ? 'pastel-purple' : color === 'pink' ? 'pastel-pink' : 'pastel-blue'} focus:ring-offset-2 inline-block text-center`}
+                : `bg-${colorAsign}/10 ${colorText[color]} hover:bg-${colorAsign}/20`
+            } focus:outline-none focus:ring-2 focus:ring-${colorAsign} focus:ring-offset-2 inline-block text-center`}
           >
             Comenzar
           </a>

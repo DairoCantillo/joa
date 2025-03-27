@@ -50,7 +50,7 @@ export default function UrlShortener() {
     <section
       id="url-shortener"
       className="w-full py-16 md:py-24 relative overflow-hidden"
-      aria-labelledby="url-shortener-heading"
+      aria-labelledby="url-shortener-heading bg-[url(/images/bg-short-url.png)] bg-cover bg-center bg-no-repeat"
     >
       {/* Imagen de fondo */}
       <div className="absolute inset-0 w-full h-full z-0">
@@ -61,7 +61,7 @@ export default function UrlShortener() {
           className="object-cover"
           priority
         />
-        <div className="absolute inset-0 bg-white/60"></div>
+        <div className="absolute inset-0 bg-black/60"></div>
       </div>
 
       <div className="container mx-auto px-4 relative z-10">
@@ -168,7 +168,7 @@ export default function UrlShortener() {
                       placeholder="https://ejemplo.com/pega-aqui-tu-enlace-super-largo-que-quieres-acortar"
                       value={url}
                       onChange={(e) => setUrl(e.target.value)}
-                      className="w-full px-4 py-4 pr-36 border border-gray-200 dark:border-gray-700 rounded-xl focus:outline-none focus:ring-2 focus:ring-pastel-purple/50 bg-white dark:bg-gray-800 transition-all duration-200"
+                      className="w-full px-4 py-4 pr-36 border border-gray-200 dark:border-gray-700 rounded-xl focus:outline-none focus:ring-2 focus:ring-pastel-purple/50 bg-white text-white dark:bg-gray-800 transition-all duration-200"
                       required
                     />
                     <button
@@ -214,7 +214,7 @@ export default function UrlShortener() {
                       placeholder="https://ejemplo.com/pega-aqui-tu-enlace-super-largo"
                       value={customUrl}
                       onChange={(e) => setCustomUrl(e.target.value)}
-                      className="w-full px-4 py-3 border border-gray-200 dark:border-gray-700 rounded-xl focus:outline-none focus:ring-2 focus:ring-pastel-purple/50 bg-white dark:bg-gray-800 transition-all duration-200"
+                      className="w-full px-4 py-3 border border-gray-200 dark:border-gray-700 rounded-xl focus:outline-none focus:ring-2 focus:ring-pastel-purple/50 bg-white text-white dark:bg-gray-800 transition-all duration-200"
                       required
                     />
                   </div>
@@ -235,7 +235,7 @@ export default function UrlShortener() {
                         placeholder="mi-super-enlace"
                         value={customPath}
                         onChange={(e) => setCustomPath(e.target.value)}
-                        className="flex-1 px-4 py-3 border border-gray-200 dark:border-gray-700 rounded-r-xl focus:outline-none focus:ring-2 focus:ring-pastel-purple/50 bg-white dark:bg-gray-800 transition-all duration-200"
+                        className="flex-1 px-4 py-3 border border-gray-200 dark:border-gray-700 rounded-r-xl focus:outline-none focus:ring-2 focus:ring-pastel-purple/50 bg-white text-white dark:bg-gray-800 transition-all duration-200"
                         required
                       />
                     </div>
@@ -270,10 +270,11 @@ export default function UrlShortener() {
                 animate={{ y: 0, opacity: 1 }}
                 transition={{ duration: 0.3 }}
                 className="mt-6 rounded-xl border border-pastel-mint/30 p-4 bg-gradient-to-r from-pastel-mint/10 to-pastel-blue/10"
-                role="status"
-                aria-live="polite"
               >
-                <div className="flex items-center justify-between">
+                <output
+                  className="flex items-center justify-between"
+                  aria-atomic="true"
+                >
                   <div className="flex items-center gap-2">
                     <div
                       className="h-2 w-2 rounded-full bg-pastel-mint"
@@ -306,7 +307,7 @@ export default function UrlShortener() {
                       />
                     )}
                   </button>
-                </div>
+                </output>
                 <a
                   href={shortenedUrl}
                   target="_blank"

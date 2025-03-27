@@ -10,13 +10,10 @@ export default function CTA() {
       className="w-full py-16 md:py-24 lg:py-32 relative overflow-hidden"
       aria-labelledby="cta-heading"
     >
-      {/* Fondo con gradiente */}
       <div
         className="absolute inset-0 bg-gradient-to-br from-pastel-purple/10 via-pastel-pink/10 to-pastel-blue/10"
         aria-hidden="true"
       ></div>
-
-      {/* Formas decorativas */}
       <div className="absolute inset-0 overflow-hidden" aria-hidden="true">
         <div className="absolute top-20 right-10 w-72 h-72 bg-pastel-mint/20 rounded-full mix-blend-multiply filter blur-xl opacity-70 animate-blob"></div>
         <div className="absolute bottom-20 left-10 w-72 h-72 bg-pastel-yellow/20 rounded-full mix-blend-multiply filter blur-xl opacity-70 animate-blob animation-delay-2000"></div>

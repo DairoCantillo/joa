@@ -224,10 +224,7 @@ export default function Pricing() {
       aria-labelledby="pricing-heading"
     >
       {/* Formas decorativas de fondo */}
-      <div
-        className="absolute inset-0 overflow-hidden -z-10"
-        aria-hidden="true"
-      >
+      <div className="absolute inset-0 -z-10" aria-hidden="true">
         <div className="absolute top-20 left-10 w-72 h-72 bg-pastel-yellow/20 rounded-full mix-blend-multiply filter blur-xl opacity-70 animate-blob"></div>
         <div className="absolute top-40 right-10 w-72 h-72 bg-pastel-purple/20 rounded-full mix-blend-multiply filter blur-xl opacity-70 animate-blob animation-delay-2000"></div>
         <div className="absolute bottom-20 left-1/3 w-72 h-72 bg-pastel-pink/20 rounded-full mix-blend-multiply filter blur-xl opacity-70 animate-blob animation-delay-4000"></div>
@@ -251,7 +248,7 @@ export default function Pricing() {
           </div>
           <h2
             id="pricing-heading"
-            className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl gradient-text"
+            className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl gradient-text min-h-16"
           >
             Elige tu Plan Perfecto
           </h2>
@@ -301,7 +298,7 @@ export default function Pricing() {
 
           <ul className="mx-auto grid max-w-screen-lg gap-6 sm:grid-cols-2 lg:grid-cols-3">
             {plans[billingPeriod as keyof typeof plans].map((plan, index) => (
-              <li key={index}>
+              <li key={plan.name}>
                 <PricingCard
                   name={plan.name}
                   icon={plan.icon}

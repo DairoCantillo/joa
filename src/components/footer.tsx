@@ -41,7 +41,7 @@ export default function Footer() {
             <ul className="flex gap-4" aria-label="Redes sociales">
               <li>
                 <a
-                  href="#"
+                  href="https://twitter.com"
                   className="text-gray-500 hover:text-pastel-purple transition-colors"
                   aria-label="Twitter"
                 >
@@ -59,7 +59,7 @@ export default function Footer() {
               </li>
               <li>
                 <a
-                  href="#"
+                  href="https://instagram.com"
                   className="text-gray-500 hover:text-pastel-purple transition-colors"
                   aria-label="Instagram"
                 >
@@ -77,7 +77,7 @@ export default function Footer() {
               </li>
               <li>
                 <a
-                  href="#"
+                  href="https://linkedin.com"
                   className="text-gray-500 hover:text-pastel-purple transition-colors"
                   aria-label="LinkedIn"
                 >

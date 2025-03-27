@@ -4,14 +4,14 @@ import type React from 'react';
 
 import { motion } from 'framer-motion';
 
-type FeatureCardProps = {
+type FeatureCardProps = Readonly<{
   icon: React.ReactNode;
   title: string;
   description: string;
   content: string;
   color: 'purple' | 'pink' | 'blue' | 'mint' | 'yellow';
   index: number;
-};
+}>;
 
 export default function FeatureCard({
   icon,
@@ -35,10 +35,12 @@ export default function FeatureCard({
       whileInView={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.5, delay: index * 0.1 }}
       viewport={{ once: true }}
-      className="flex flex-col items-center text-center rounded-xl border border-white/50 dark:border-gray-700/50 bg-white/80 dark:bg-gray-800/80 backdrop-blur-sm p-6 shadow-md hover:shadow-lg transition-all"
+      className="flex flex-col min-h-70  items-center text-center rounded-xl border border-white/50 dark:border-gray-700/50 bg-white/80 dark:bg-gray-800/95 p-6 shadow-md hover:shadow-lg transition-all"
     >
       <div className="mb-4">
-        <div className={`p-3 rounded-full ${colorClasses[color]} mb-3`}>
+        <div
+          className={`p-3 rounded-full ${colorClasses[color]} flex justify-center mb-3`}
+        >
           {icon}
         </div>
         <h3 className="text-lg font-semibold text-gray-800 dark:text-gray-200">
@@ -51,28 +53,7 @@ export default function FeatureCard({
       <div className="flex-1">
         <p className="text-gray-600 dark:text-gray-400 text-sm">{content}</p>
       </div>
-      <div className="mt-4 pt-4 border-t border-gray-100 dark:border-gray-700 w-full">
-        <button
-          className={`text-sm font-medium ${colorClasses[color].split(' ')[1]} flex items-center justify-center gap-1 mx-auto`}
-        >
-          <span>Saber más</span>
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            width="24"
-            height="24"
-            viewBox="0 0 24 24"
-            fill="none"
-            stroke="currentColor"
-            strokeWidth="2"
-            strokeLinecap="round"
-            strokeLinejoin="round"
-            className="h-3 w-3"
-          >
-            <path d="M5 12h14"></path>
-            <path d="m12 5 7 7-7 7"></path>
-          </svg>
-        </button>
-      </div>
+      <div className="mt-4 pt-4 border-t border-gray-100 dark:border-gray-700 w-full"></div>
     </motion.div>
   );
 }
