@@ -3,7 +3,7 @@
 import { motion } from 'framer-motion';
 import { Sparkles, ArrowRight } from 'lucide-react';
 
-export default function CTA() {
+const CTA = () => {
   return (
     <section
       id="cta"
@@ -103,4 +103,6 @@ export default function CTA() {
       </div>
     </section>
   );
-}
+};
+
+export default CTA;

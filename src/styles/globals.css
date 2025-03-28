@@ -61,6 +61,15 @@
   --border: 240 3.7% 15.9%;
   --input: 240 3.7% 15.9%;
   --ring: 287 59% 67%;
+
+  --pastel-purple: #c77ddb;
+  --pastel-pink: #e78ad0;
+  --pastel-blue: #8bd7e8;
+  --pastel-mint: #a4e6a4;
+  --pastel-yellow: #f8e8a0;
+  --border-border: #ccc;
+  --background: #fff;
+  --foreground: #000;
 }
 
 @keyframes blob {
@@ -98,18 +107,6 @@
 }
 .animate-pulse-slow {
   animation: pulse-slow 3s cubic-bezier(0.4, 0, 0.6, 1) infinite;
-}
-
-/* Variables de color */
-:root {
-  --pastel-purple: #c77ddb;
-  --pastel-pink: #e78ad0;
-  --pastel-blue: #8bd7e8;
-  --pastel-mint: #a4e6a4;
-  --pastel-yellow: #f8e8a0;
-  --border-border: #ccc;
-  --background: #fff;
-  --foreground: #000;
 }
 
 @theme {

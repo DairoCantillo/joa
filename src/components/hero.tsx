@@ -9,7 +9,6 @@ export default function Hero() {
       className="w-full py-16 md:py-24 lg:py-32 relative overflow-hidden"
       aria-labelledby="hero-heading"
     >
-      {/* Formas decorativas de fondo */}
       <div
         className="absolute inset-0 overflow-hidden -z-10"
         aria-hidden="true"
@@ -28,7 +27,7 @@ export default function Hero() {
             className="flex flex-col justify-center space-y-6"
           >
             <div className="space-y-4">
-              <div className="inline-flex items-center gap-2 bg-white/80 dark:bg-gray-800/80 px-3 py-1.5 rounded-full text-pastel-purple font-medium shadow-sm">
+              <div className="inline-flex items-center gap-2 bg-white/95 dark:bg-gray-800/95 px-3 py-1.5 rounded-full text-pastel-purple font-medium shadow-sm">
                 <Sparkles
                   size={16}
                   className="text-pastel-yellow"
@@ -42,7 +41,7 @@ export default function Hero() {
               >
                 Enlaces Cortos, Grandes Resultados
               </h1>
-              <p className="max-w-[600px] text-gray-700 dark:text-gray-300 md:text-xl">
+              <p className="max-w-[600px] text-gray-600 md:text-xl">
                 Transforma enlaces largos y difíciles de manejar en URLs
                 limpias, memorables y rastreables con nuestro potente acortador
                 de URLs.

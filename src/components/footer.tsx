@@ -1,6 +1,5 @@
 'use client';
-
-import Link from 'next/link';
+import { LinkIcon } from '@heroicons/react/24/outline';
 
 export default function Footer() {
   return (
@@ -17,22 +16,10 @@ export default function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
           <div className="md:col-span-1">
             <div className="flex items-center gap-2 mb-4">
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                width="24"
-                height="24"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                strokeWidth="2"
-                strokeLinecap="round"
-                strokeLinejoin="round"
+              <LinkIcon
                 className="h-6 w-6 text-pastel-purple"
                 aria-hidden="true"
-              >
-                <path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path>
-                <path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path>
-              </svg>
+              />
               <span className="text-xl font-bold gradient-text">Short.ly</span>
             </div>
             <p className="text-gray-600 dark:text-gray-400 text-sm mb-4">
@@ -95,128 +82,6 @@ export default function Footer() {
               </li>
             </ul>
           </div>
-
-          <nav className="md:col-span-3 grid grid-cols-2 md:grid-cols-3 gap-8">
-            <div>
-              <h3 className="text-sm font-semibold text-gray-800 dark:text-gray-200 uppercase tracking-wider mb-4">
-                Producto
-              </h3>
-              <ul className="space-y-2">
-                <li>
-                  <Link
-                    href="#features"
-                    className="text-gray-600 dark:text-gray-400 hover:text-pastel-purple dark:hover:text-pastel-purple transition-colors text-sm"
-                  >
-                    Características
-                  </Link>
-                </li>
-                <li>
-                  <Link
-                    href="#pricing"
-                    className="text-gray-600 dark:text-gray-400 hover:text-pastel-purple dark:hover:text-pastel-purple transition-colors text-sm"
-                  >
-                    Precios
-                  </Link>
-                </li>
-                <li>
-                  <Link
-                    href="#api"
-                    className="text-gray-600 dark:text-gray-400 hover:text-pastel-purple dark:hover:text-pastel-purple transition-colors text-sm"
-                  >
-                    API
-                  </Link>
-                </li>
-                <li>
-                  <Link
-                    href="#integrations"
-                    className="text-gray-600 dark:text-gray-400 hover:text-pastel-purple dark:hover:text-pastel-purple transition-colors text-sm"
-                  >
-                    Integraciones
-                  </Link>
-                </li>
-              </ul>
-            </div>
-
-            <div>
-              <h3 className="text-sm font-semibold text-gray-800 dark:text-gray-200 uppercase tracking-wider mb-4">
-                Recursos
-              </h3>
-              <ul className="space-y-2">
-                <li>
-                  <Link
-                    href="#blog"
-                    className="text-gray-600 dark:text-gray-400 hover:text-pastel-purple dark:hover:text-pastel-purple transition-colors text-sm"
-                  >
-                    Blog
-                  </Link>
-                </li>
-                <li>
-                  <Link
-                    href="#docs"
-                    className="text-gray-600 dark:text-gray-400 hover:text-pastel-purple dark:hover:text-pastel-purple transition-colors text-sm"
-                  >
-                    Documentación
-                  </Link>
-                </li>
-                <li>
-                  <Link
-                    href="#guides"
-                    className="text-gray-600 dark:text-gray-400 hover:text-pastel-purple dark:hover:text-pastel-purple transition-colors text-sm"
-                  >
-                    Guías
-                  </Link>
-                </li>
-                <li>
-                  <Link
-                    href="#tutorials"
-                    className="text-gray-600 dark:text-gray-400 hover:text-pastel-purple dark:hover:text-pastel-purple transition-colors text-sm"
-                  >
-                    Tutoriales
-                  </Link>
-                </li>
-              </ul>
-            </div>
-
-            <div>
-              <h3 className="text-sm font-semibold text-gray-800 dark:text-gray-200 uppercase tracking-wider mb-4">
-                Empresa
-              </h3>
-              <ul className="space-y-2">
-                <li>
-                  <Link
-                    href="#about"
-                    className="text-gray-600 dark:text-gray-400 hover:text-pastel-purple dark:hover:text-pastel-purple transition-colors text-sm"
-                  >
-                    Acerca de
-                  </Link>
-                </li>
-                <li>
-                  <Link
-                    href="#contact"
-                    className="text-gray-600 dark:text-gray-400 hover:text-pastel-purple dark:hover:text-pastel-purple transition-colors text-sm"
-                  >
-                    Contacto
-                  </Link>
-                </li>
-                <li>
-                  <Link
-                    href="#terms"
-                    className="text-gray-600 dark:text-gray-400 hover:text-pastel-purple dark:hover:text-pastel-purple transition-colors text-sm"
-                  >
-                    Términos
-                  </Link>
-                </li>
-                <li>
-                  <Link
-                    href="#privacy"
-                    className="text-gray-600 dark:text-gray-400 hover:text-pastel-purple dark:hover:text-pastel-purple transition-colors text-sm"
-                  >
-                    Privacidad
-                  </Link>
-                </li>
-              </ul>
-            </div>
-          </nav>
         </div>
 
         <div className="mt-12 pt-8 border-t border-gray-100 dark:border-gray-800 flex flex-col md:flex-row justify-between items-center">

@@ -4,21 +4,7 @@ import type React from 'react';
 
 import { motion } from 'framer-motion';
 import { Check, X } from 'lucide-react';
-
-type PricingCardProps = Readonly<{
-  name: string;
-  icon: React.ReactNode;
-  price: string;
-  period: string;
-  description: string;
-  features: Array<{
-    included: boolean;
-    text: string;
-  }>;
-  popular?: boolean;
-  color: 'purple' | 'pink' | 'blue';
-  index: number;
-}>;
+import { PricingCardProps } from '@/types/Pricing';
 
 export default function PricingCard({
   name,
@@ -64,7 +50,7 @@ export default function PricingCard({
         className="absolute -inset-0.5 bg-gradient-to-r from-pastel-purple via-pastel-pink to-pastel-blue rounded-xl opacity-20 group-hover:opacity-40 transition-opacity"
         aria-hidden="true"
       ></div>
-      <div className="relative bg-white dark:bg-gray-800 rounded-xl flex flex-col h-full">
+      <div className="relative min-h-120 bg-white dark:bg-gray-800 rounded-xl flex flex-col h-full">
         <div
           className={`h-2 w-full bg-gradient-to-r ${colorClasses[color]}`}
           aria-hidden="true"

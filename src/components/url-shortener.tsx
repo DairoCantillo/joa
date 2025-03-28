@@ -332,9 +332,6 @@ export default function UrlShortener() {
               <span className="text-xs bg-white/50 dark:bg-gray-700/50 px-3 py-1 rounded-full text-pastel-blue">
                 Estadísticas
               </span>
-              <span className="text-xs bg-white/50 dark:bg-gray-700/50 px-3 py-1 rounded-full text-pastel-pink">
-                QR Code
-              </span>
               <span className="text-xs bg-white/50 dark:bg-gray-700/50 px-3 py-1 rounded-full text-pastel-yellow">
                 Personalizable
               </span>

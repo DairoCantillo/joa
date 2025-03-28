@@ -1,6 +1,7 @@
 import Link from 'next/link';
 import type { Metadata } from 'next';
 import LoginForm from '@/components/login-form';
+import { LinkIcon } from '@heroicons/react/24/outline';
 
 export const metadata: Metadata = {
   title: 'Iniciar Sesión | Short.ly',
@@ -16,21 +17,7 @@ export default function LoginPage() {
           <div className="flex flex-col space-y-2 text-center">
             <div className="flex justify-center">
               <Link href="/" className="flex items-center gap-2">
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  width="24"
-                  height="24"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  stroke="currentColor"
-                  strokeWidth="2"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  className="h-6 w-6 text-primary"
-                >
-                  <path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path>
-                  <path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path>
-                </svg>
+                <LinkIcon className="h-6 w-6 text-primary" aria-hidden="true" />
                 <span className="text-xl font-bold">Short.ly</span>
               </Link>
             </div>
