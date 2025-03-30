@@ -82,7 +82,7 @@ export const plans = {
     {
       name: 'Pro',
       icon: <ShieldCheckIcon className="h-5 w-5 text-pastel-purple" />,
-      price: '$12',
+      price: '$2',
       period: 'mes',
       description: 'Para profesionales y equipos pequeños',
       features: [
@@ -98,7 +98,7 @@ export const plans = {
     {
       name: 'Empresas',
       icon: <BriefcaseIcon className="h-5 w-5 text-pastel-pink" />,
-      price: '$29',
+      price: '$5',
       period: 'mes',
       description: 'Para empresas con necesidades avanzadas',
       features: [
