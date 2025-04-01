@@ -4,46 +4,71 @@ import type React from 'react';
 
 import { useState } from 'react';
 import { motion } from 'framer-motion';
-import { Sparkles, Link, Copy, CheckCheck, Wand2 } from 'lucide-react';
+import {
+  Sparkles,
+  Link,
+  Copy,
+  CheckCheck,
+  Wand2,
+  ArrowLeft,
+} from 'lucide-react';
 import Image from 'next/image';
+import { generateShortUrl } from '@/utils/urlUtils';
+import UrlShortenerService from '@/services/urlShortenerService';
 
 export default function UrlShortener() {
   const [activeTab, setActiveTab] = useState('standard');
   const [url, setUrl] = useState('');
-  const [customUrl, setCustomUrl] = useState('');
-  const [customPath, setCustomPath] = useState('');
+  const [customShortUrl, setCustomShortUrl] = useState('');
   const [shortenedUrl, setShortenedUrl] = useState('');
   const [copied, setCopied] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    setIsLoading(true);
-
-    // Simulamos una carga
-    await new Promise((resolve) => setTimeout(resolve, 800));
-
-    // Esto se conectaría a tu servicio real de acortamiento de URL
-    setShortenedUrl('https://short.ly/a1b2c3');
-    setIsLoading(false);
+    try {
+      setIsLoading(true);
+      const tokenUrl = generateShortUrl();
+      const response = await UrlShortenerService.registerUrl(url, tokenUrl);
+      if (response) {
+        setShortenedUrl(tokenUrl);
+        setIsLoading(false);
+      }
+    } catch (error) {
+      setIsLoading(false);
+      console.error('Error al acortar la URL:', error);
+    }
   };
 
   const handleCustomSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    setIsLoading(true);
-
-    // Simulamos una carga
-    await new Promise((resolve) => setTimeout(resolve, 800));
-
-    // Esto se conectaría a tu servicio real de acortamiento de URL con ruta personalizada
-    setShortenedUrl(`https://short.ly/${customPath}`);
-    setIsLoading(false);
+    try {
+      setIsLoading(true);
+      const response = await UrlShortenerService.registerUrl(
+        url,
+        customShortUrl,
+      );
+      if (response) {
+        setShortenedUrl(customShortUrl);
+        setIsLoading(false);
+      }
+    } catch (error) {
+      setIsLoading(false);
+      console.error('Error al acortar la URL:', error);
+    }
   };
 
   const copyToClipboard = () => {
-    navigator.clipboard.writeText(shortenedUrl);
+    navigator.clipboard.writeText(`https://short.ly/${shortenedUrl}`);
     setCopied(true);
     setTimeout(() => setCopied(false), 2000);
+  };
+  const resetState = () => {
+    setUrl('');
+    setCustomShortUrl('');
+    setShortenedUrl('');
+    setCopied(false);
+    setIsLoading(false);
   };
 
   return (
@@ -106,6 +131,19 @@ export default function UrlShortener() {
             transition={{ duration: 0.6, delay: 0.3 }}
             className="w-full max-w-3xl bg-white dark:bg-gray-800 rounded-2xl shadow-xl p-8 border border-white/50 dark:border-gray-700/50"
           >
+            {shortenedUrl && (
+              <button
+                onClick={resetState}
+                className="rounded-xl py-2 text-sm font-medium text-gray-700 dark:text-gray-300 hover:text-pastel-pink dark:hover:bg-gray-800 shadow-sm flex items-center justify-center gap-2"
+              >
+                <ArrowLeft
+                  size={22}
+                  className="text-pastel-purple"
+                  aria-hidden="true"
+                />
+                <span>Crear otro enlace</span>
+              </button>
+            )}
             <div
               role="tablist"
               className="flex w-full mb-6 bg-gray-100/80 dark:bg-gray-700/80 p-1 rounded-xl"
@@ -212,8 +250,8 @@ export default function UrlShortener() {
                       id="long-url"
                       type="url"
                       placeholder="https://ejemplo.com/pega-aqui-tu-enlace-super-largo"
-                      value={customUrl}
-                      onChange={(e) => setCustomUrl(e.target.value)}
+                      value={url}
+                      onChange={(e) => setUrl(e.target.value)}
                       className="w-full px-4 py-3 border border-gray-200 dark:border-gray-700 rounded-xl focus:outline-none focus:ring-2 focus:ring-pastel-purple/50 bg-white text-white dark:bg-gray-800 transition-all duration-200"
                       required
                     />
@@ -233,8 +271,8 @@ export default function UrlShortener() {
                         id="custom-path"
                         type="text"
                         placeholder="mi-super-enlace"
-                        value={customPath}
-                        onChange={(e) => setCustomPath(e.target.value)}
+                        value={customShortUrl}
+                        onChange={(e) => setCustomShortUrl(e.target.value)}
                         className="flex-1 px-4 py-3 border border-gray-200 dark:border-gray-700 rounded-r-xl focus:outline-none focus:ring-2 focus:ring-pastel-purple/50 bg-white text-white dark:bg-gray-800 transition-all duration-200"
                         required
                       />
@@ -314,7 +352,7 @@ export default function UrlShortener() {
                   rel="noopener noreferrer"
                   className="mt-2 block truncate font-medium text-lg hover:underline text-pastel-purple"
                 >
-                  {shortenedUrl}
+                  {`https://short.ly/${shortenedUrl}`}
                 </a>
                 <p className="text-xs text-gray-500 dark:text-gray-400 mt-2">
                   Haz clic para abrir o usa el botón de copiar para compartir

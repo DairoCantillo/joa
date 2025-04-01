@@ -1,5 +1,6 @@
 import type { Metadata, Viewport } from 'next';
 import '@styles/globals.css';
+import { AxiosInterceptor } from '@/interceptors/axiosInterceptor';
 
 export const viewport: Viewport = {
   width: 'device-width',
@@ -17,6 +18,7 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  AxiosInterceptor.initialize();
   return (
     <html lang="en">
       <body className={`antialiased`}>{children}</body>
