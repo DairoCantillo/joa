@@ -8,25 +8,34 @@ class UrlShortenerService {
     UrlShortenerService.apiBaseUrl = apiBaseUrl;
   }
 
-  static async registerUrl(url: string, shortUrl: string): Promise<Axios> {
+  static async registerUrl(
+    url: string,
+    shortUrl: string,
+  ): Promise<Axios | null> {
     try {
-      console.log('NEXT_PUBLIC_API_URL:', process.env.NEXT_PUBLIC_API_URL);
-      return await axios.post(`${this.apiBaseUrl}/shorturls`, {
+      const response = await axios.post(`${this.apiBaseUrl}/shorturls`, {
         url,
         shortUrl,
       });
+      if (response.data) {
+        return response.data;
+      }
+      return null;
     } catch (error) {
       console.error('Error en registerUrl:', error);
       throw error;
     }
   }
 
-  static async getUrl(shortUrl: string): Promise<string> {
+  static async getUrl(shortUrl: string): Promise<string | null> {
     try {
       const response = await axios.get(
         `${this.apiBaseUrl}/shorturls/${shortUrl}`,
       );
-      return response.data.url;
+      if (response.data) {
+        return response.data.url;
+      }
+      return null;
     } catch (error) {
       console.error('Error en getUrl:', error);
       throw error;

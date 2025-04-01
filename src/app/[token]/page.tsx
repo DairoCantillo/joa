@@ -1,5 +1,6 @@
 import { notFound, redirect } from 'next/navigation';
 import UrlShortenerService from '@/services/urlShortenerService';
+import { RESERVED_ROUTES } from '@/constants/routes';
 
 export default async function RedirectPage({
   params,
@@ -9,6 +10,10 @@ export default async function RedirectPage({
   const { token } = await params;
   if (!token) {
     notFound();
+  }
+  if (RESERVED_ROUTES.includes(token)) {
+    redirect(`/${token}`);
+    return;
   }
   const targetUrl = await UrlShortenerService.getUrl(token);
   if (targetUrl) {
