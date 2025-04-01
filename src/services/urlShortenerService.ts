@@ -23,7 +23,9 @@ class UrlShortenerService {
 
   static async getUrl(shortUrl: string): Promise<string> {
     try {
-      const response = await axios.get(`${this.apiBaseUrl}/${shortUrl}`);
+      const response = await axios.get(
+        `${this.apiBaseUrl}/shorturls/${shortUrl}`,
+      );
       return response.data.url;
     } catch (error) {
       console.error('Error en getUrl:', error);
