@@ -15,6 +15,7 @@ import {
 import Image from 'next/image';
 import { generateShortUrl } from '@/utils/urlUtils';
 import UrlShortenerService from '@/services/urlShortenerService';
+import { apiConfig } from '@/constants/apiEndpoints';
 
 export default function UrlShortener() {
   const [activeTab, setActiveTab] = useState('standard');
@@ -59,7 +60,7 @@ export default function UrlShortener() {
   };
 
   const copyToClipboard = () => {
-    navigator.clipboard.writeText(`https://short.ly/${shortenedUrl}`);
+    navigator.clipboard.writeText(`${apiConfig.hostname}/${shortenedUrl}`);
     setCopied(true);
     setTimeout(() => setCopied(false), 2000);
   };
@@ -265,7 +266,7 @@ export default function UrlShortener() {
                     </label>
                     <div className="flex items-center">
                       <div className="bg-gray-100 dark:bg-gray-700 px-4 py-3 rounded-l-xl border-y border-l border-gray-200 dark:border-gray-700 text-gray-500 dark:text-gray-400 font-medium">
-                        short.ly/
+                        {apiConfig.hostname}/
                       </div>
                       <input
                         id="custom-path"
@@ -352,7 +353,7 @@ export default function UrlShortener() {
                   rel="noopener noreferrer"
                   className="mt-2 block truncate font-medium text-lg hover:underline text-pastel-purple"
                 >
-                  {`https://short.ly/${shortenedUrl}`}
+                  {`${apiConfig.hostname}/${shortenedUrl}`}
                 </a>
                 <p className="text-xs text-gray-500 dark:text-gray-400 mt-2">
                   Haz clic para abrir o usa el botón de copiar para compartir

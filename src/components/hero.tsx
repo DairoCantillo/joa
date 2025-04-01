@@ -1,4 +1,5 @@
 'use client';
+import { apiConfig } from '@/constants/apiEndpoints';
 import { motion } from 'framer-motion';
 import { Sparkles, ArrowRight } from 'lucide-react';
 
@@ -154,7 +155,7 @@ export default function Hero() {
                         </div>
                         <div>
                           <div className="text-sm font-medium text-gray-700 dark:text-gray-300">
-                            short.ly/promo
+                            {apiConfig.hostname}/promo
                           </div>
                           <div className="text-xs text-gray-500 dark:text-gray-400">
                             Creado hace 2 días
@@ -175,7 +176,7 @@ export default function Hero() {
                         </div>
                         <div>
                           <div className="text-sm font-medium text-gray-700 dark:text-gray-300">
-                            short.ly/evento
+                            {apiConfig.hostname}/evento
                           </div>
                           <div className="text-xs text-gray-500 dark:text-gray-400">
                             Creado hace 5 días
@@ -196,7 +197,7 @@ export default function Hero() {
                         </div>
                         <div>
                           <div className="text-sm font-medium text-gray-700 dark:text-gray-300">
-                            short.ly/blog
+                            {apiConfig.hostname}/blog
                           </div>
                           <div className="text-xs text-gray-500 dark:text-gray-400">
                             Creado hace 1 semana

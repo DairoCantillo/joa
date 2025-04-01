@@ -1,9 +1,10 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
 import { LinkIcon } from '@heroicons/react/24/outline';
+import { apiConfig } from '@/constants/apiEndpoints';
 
 export const metadata: Metadata = {
-  title: 'Panel de Control | Short.ly',
+  title: 'Panel de Control | JOA',
   description: 'Gestiona tus URLs acortadas',
 };
 
@@ -14,7 +15,7 @@ export default function DashboardPage() {
         <div className="container mx-auto flex h-16 items-center justify-between px-4">
           <div className="flex items-center gap-2">
             <LinkIcon className="h-6 w-6 text-primary" aria-hidden="true" />
-            <span className="text-xl font-bold">Short.ly</span>
+            <span className="text-xl font-bold">{apiConfig.hostname}</span>
           </div>
           <nav className="hidden md:flex gap-6">
             <Link
@@ -115,7 +116,7 @@ export default function DashboardPage() {
                 </svg>
               </div>
               <p className="text-xl font-medium mt-2 truncate">
-                short.ly/lanzamiento-producto
+                {apiConfig.hostname}/lanzamiento-producto
               </p>
               <p className="text-sm text-muted-foreground mt-1">
                 543 clics esta semana
@@ -155,7 +156,7 @@ export default function DashboardPage() {
                   <tbody>
                     <tr className="border-t">
                       <td className="px-4 py-3 text-sm">
-                        short.ly/lanzamiento-producto
+                        {apiConfig.hostname}/lanzamiento-producto
                       </td>
                       <td className="px-4 py-3 text-sm truncate max-w-[200px]">
                         https://ejemplo.com/detalles-e-informacion-de-nuestro-nuevo-lanzamiento-de-producto
@@ -165,7 +166,7 @@ export default function DashboardPage() {
                     </tr>
                     <tr className="border-t">
                       <td className="px-4 py-3 text-sm">
-                        short.ly/oferta-verano
+                        {apiConfig.hostname}/oferta-verano
                       </td>
                       <td className="px-4 py-3 text-sm truncate max-w-[200px]">
                         https://ejemplo.com/promocion-verano-2023
@@ -174,7 +175,9 @@ export default function DashboardPage() {
                       <td className="px-4 py-3 text-sm">hace 5 días</td>
                     </tr>
                     <tr className="border-t">
-                      <td className="px-4 py-3 text-sm">short.ly/webinar</td>
+                      <td className="px-4 py-3 text-sm">
+                        {apiConfig.hostname}/webinar
+                      </td>
                       <td className="px-4 py-3 text-sm truncate max-w-[200px]">
                         https://ejemplo.com/registrate-para-proxima-serie-de-webinars
                       </td>

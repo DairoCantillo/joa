@@ -2,11 +2,12 @@ import Link from 'next/link';
 import type { Metadata } from 'next';
 import LoginForm from '@/components/login-form';
 import { LinkIcon } from '@heroicons/react/24/outline';
+import { apiConfig } from '@/constants/apiEndpoints';
 
 export const metadata: Metadata = {
-  title: 'Iniciar Sesión | Short.ly',
+  title: 'Iniciar Sesión | JOA',
   description:
-    'Inicia sesión en tu cuenta de Short.ly para gestionar tus URLs acortadas',
+    'Inicia sesión en tu cuenta de JOA para gestionar tus URLs acortadas',
 };
 
 export default function LoginPage() {
@@ -18,7 +19,7 @@ export default function LoginPage() {
             <div className="flex justify-center">
               <Link href="/" className="flex items-center gap-2">
                 <LinkIcon className="h-6 w-6 text-primary" aria-hidden="true" />
-                <span className="text-xl font-bold">Short.ly</span>
+                <span className="text-xl font-bold">{apiConfig.hostname}</span>
               </Link>
             </div>
             <h1 className="text-2xl font-bold tracking-tight">

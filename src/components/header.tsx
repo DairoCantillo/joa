@@ -1,12 +1,16 @@
 import Link from 'next/link';
 import { LinkIcon } from '@heroicons/react/24/outline';
+import { apiConfig } from '@/constants/apiEndpoints';
 
 export default function Header() {
   return (
     <header className="sticky top-0 z-50 w-full border-b bg-white/80 dark:bg-gray-900/95 backdrop-blur-sm">
       <div className="container mx-auto flex h-16 items-center justify-between px-4">
         <div className="flex items-center gap-2">
-          <Link href="/" aria-label="Short.ly - Página de inicio">
+          <Link
+            href="/"
+            aria-label={`${apiConfig.hostname || 'Joa'} - Página de inicio`}
+          >
             <LinkIcon
               className="h-6 w-6 text-pastel-purple"
               aria-hidden="true"

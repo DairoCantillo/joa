@@ -2,10 +2,11 @@ import Link from 'next/link';
 import type { Metadata } from 'next';
 import RegisterForm from '@/components/register-form';
 import { LinkIcon } from '@heroicons/react/24/outline';
+import { apiConfig } from '@/constants/apiEndpoints';
 
 export const metadata: Metadata = {
-  title: 'Registro | Short.ly',
-  description: 'Crea una nueva cuenta en Short.ly para comenzar a acortar URLs',
+  title: 'Registro | JOA',
+  description: 'Crea una nueva cuenta en JOA para comenzar a acortar URLs',
 };
 
 export default function RegisterPage() {
@@ -17,7 +18,7 @@ export default function RegisterPage() {
             <div className="flex justify-center">
               <Link href="/" className="flex items-center gap-2">
                 <LinkIcon className="h-6 w-6 text-primary" aria-hidden="true" />
-                <span className="text-xl font-bold">Short.ly</span>
+                <span className="text-xl font-bold">{apiConfig.hostname}</span>
               </Link>
             </div>
             <h1 className="text-2xl font-bold tracking-tight">

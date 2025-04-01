@@ -1,4 +1,5 @@
 'use client';
+import { apiConfig } from '@/constants/apiEndpoints';
 import { LinkIcon } from '@heroicons/react/24/outline';
 
 export default function Footer() {
@@ -20,7 +21,9 @@ export default function Footer() {
                 className="h-6 w-6 text-pastel-purple"
                 aria-hidden="true"
               />
-              <span className="text-xl font-bold gradient-text">Short.ly</span>
+              <span className="text-xl font-bold gradient-text">
+                {apiConfig.hostname}
+              </span>
             </div>
             <p className="text-gray-600 dark:text-gray-400 text-sm mb-4">
               La forma más sencilla de acortar, compartir y rastrear enlaces.
@@ -86,8 +89,8 @@ export default function Footer() {
 
         <div className="mt-12 pt-8 border-t border-gray-100 dark:border-gray-800 flex flex-col md:flex-row justify-between items-center">
           <p className="text-sm text-gray-500 dark:text-gray-400">
-            &copy; {new Date().getFullYear()} Short.ly. Todos los derechos
-            reservados.
+            &copy; {new Date().getFullYear()} {apiConfig.hostname}. Todos los
+            derechos reservados.
           </p>
           <div className="mt-4 md:mt-0 flex items-center">
             <div className="inline-flex items-center gap-2 bg-white dark:bg-gray-800 px-3 py-1.5 rounded-full shadow-sm">

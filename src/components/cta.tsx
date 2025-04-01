@@ -1,5 +1,6 @@
 'use client';
 
+import { apiConfig } from '@/constants/apiEndpoints';
 import { motion } from 'framer-motion';
 import { Sparkles, ArrowRight } from 'lucide-react';
 
@@ -46,7 +47,7 @@ const CTA = () => {
 
             <p className="mx-auto max-w-[600px] text-gray-700 dark:text-gray-300 md:text-xl">
               Únete a miles de profesionales de marketing, creadores de
-              contenido y empresas que usan Short.ly todos los días.
+              contenido y empresas que usan {apiConfig.hostname} todos los días.
             </p>
 
             <div className="flex flex-col sm:flex-row gap-4 mt-4 w-full max-w-md">

@@ -11,7 +11,6 @@ export default async function RedirectPage({
     notFound();
   }
   const targetUrl = await UrlShortenerService.getUrl(token);
-  console.log('URL obtenida:', targetUrl);
   if (targetUrl) {
     redirect(targetUrl);
   }
