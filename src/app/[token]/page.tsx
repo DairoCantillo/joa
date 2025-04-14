@@ -5,9 +5,10 @@ import { RESERVED_ROUTES, Routes } from '@/constants/routes';
 export default async function RedirectPage({
   params,
 }: {
-  readonly params: { readonly token: string };
+  readonly params: Promise<{ readonly token: string }>;
 }) {
-  const { token } = await params;
+  const serviceParams = await params;
+  const { token } = serviceParams;
 
   // Cuando el token está vacío o es la ruta raíz, redirigir a la página de inicio
   if (!token || token === '') {
