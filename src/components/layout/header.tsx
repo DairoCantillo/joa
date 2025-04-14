@@ -60,9 +60,6 @@ export default function Header() {
                 Registrarse Gratis
               </button>
             </div>
-            <span className="mt-1 text-xs font-medium text-gray-500 bg-white px-2 rounded-full">
-              Próximamente
-            </span>
           </div>
           <ThemeToggle />
         </div>
