@@ -1,5 +1,6 @@
 import Link from 'next/link';
 import { apiConfig } from '@/constants/apiEndpoints';
+import ThemeToggle from '@/components/ui/ThemeToggle';
 
 export default function Header() {
   return (
@@ -43,24 +44,27 @@ export default function Header() {
             </li>
           </ul>
         </nav>
-        <div className="flex flex-col items-center">
-          <div className="flex items-center gap-4">
-            <button
-              disabled
-              className="all-initial text-sm font-medium text-gray-400 cursor-not-allowed opacity-60"
-            >
-              Iniciar Sesión
-            </button>
-            <button
-              disabled
-              className="rounded-md bg-gray-300 px-4 py-2 text-sm font-medium text-gray-600 cursor-not-allowed opacity-60"
-            >
-              Registrarse Gratis
-            </button>
+        <div className="flex items-center gap-4">
+          <div className="flex flex-col items-center">
+            <div className="flex items-center gap-4">
+              <button
+                disabled
+                className="all-initial text-sm font-medium text-gray-400 cursor-not-allowed opacity-60"
+              >
+                Iniciar Sesión
+              </button>
+              <button
+                disabled
+                className="rounded-md bg-gray-300 px-4 py-2 text-sm font-medium text-gray-600 cursor-not-allowed opacity-60"
+              >
+                Registrarse Gratis
+              </button>
+            </div>
+            <span className="mt-1 text-xs font-medium text-gray-500 bg-white px-2 rounded-full">
+              Próximamente
+            </span>
           </div>
-          <span className="mt-1 text-xs font-medium text-gray-500 bg-white px-2 rounded-full">
-            Próximamente
-          </span>
+          <ThemeToggle />
         </div>
       </div>
     </header>

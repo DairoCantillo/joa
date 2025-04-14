@@ -1,6 +1,7 @@
 import type { Metadata, Viewport } from 'next';
 import '@styles/globals.css';
 import { AxiosInterceptor } from '@/interceptors/axiosInterceptor';
+import { ThemeProvider } from '@/components/theme-provider';
 
 export const viewport: Viewport = {
   width: 'device-width',
@@ -21,8 +22,12 @@ export default function RootLayout({
 }>) {
   AxiosInterceptor.initialize();
   return (
-    <html lang="en">
-      <body className={`antialiased`}>{children}</body>
+    <html lang="es" suppressHydrationWarning>
+      <body className="antialiased">
+        <ThemeProvider attribute="class" defaultTheme="light" enableSystem>
+          {children}
+        </ThemeProvider>
+      </body>
     </html>
   );
 }

@@ -31,6 +31,14 @@
   --ring: 287 59% 67%;
 
   --radius: 1rem;
+
+  /* Variables para colores pastel en tema claro */
+  --pastel-purple: #c77ddb;
+  --pastel-pink: #e78ad0;
+  --pastel-blue: #8bd7e8;
+  --pastel-mint: #a4e6a4;
+  --pastel-yellow: #f8e8a0;
+  --border-border: #e2e2e2;
 }
 
 .dark {
@@ -62,14 +70,13 @@
   --input: 240 3.7% 15.9%;
   --ring: 287 59% 67%;
 
-  --pastel-purple: #c77ddb;
-  --pastel-pink: #e78ad0;
-  --pastel-blue: #8bd7e8;
-  --pastel-mint: #a4e6a4;
-  --pastel-yellow: #f8e8a0;
-  --border-border: #ccc;
-  --background: #fff;
-  --foreground: #000;
+  /* Variables para colores pastel en tema oscuro con mejor contraste */
+  --pastel-purple: #d68ee6;
+  --pastel-pink: #f09ddb;
+  --pastel-blue: #98e5f7;
+  --pastel-mint: #b3f0b3;
+  --pastel-yellow: #fff2ad;
+  --border-border: #444;
 }
 
 @keyframes blob {
