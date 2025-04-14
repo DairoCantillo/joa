@@ -43,19 +43,24 @@ export default function Header() {
             </li>
           </ul>
         </nav>
-        <div className="flex items-center gap-4">
-          <Link
-            href="/auth/login"
-            className="all-initial text-sm font-medium gradient-nav-item"
-          >
-            Iniciar Sesión
-          </Link>
-          <Link
-            href="/auth/register"
-            className="rounded-md bg-gradient-to-r from-pastel-purple to-pastel-pink px-4 py-2 text-sm font-medium text-white hover:opacity-90 focus:outline-none focus:ring-2 focus:ring-pastel-purple focus:ring-offset-2 transition-all"
-          >
-            Registrarse Gratis
-          </Link>
+        <div className="flex flex-col items-center">
+          <div className="flex items-center gap-4">
+            <button
+              disabled
+              className="all-initial text-sm font-medium text-gray-400 cursor-not-allowed opacity-60"
+            >
+              Iniciar Sesión
+            </button>
+            <button
+              disabled
+              className="rounded-md bg-gray-300 px-4 py-2 text-sm font-medium text-gray-600 cursor-not-allowed opacity-60"
+            >
+              Registrarse Gratis
+            </button>
+          </div>
+          <span className="mt-1 text-xs font-medium text-gray-500 bg-white px-2 rounded-full">
+            Próximamente
+          </span>
         </div>
       </div>
     </header>

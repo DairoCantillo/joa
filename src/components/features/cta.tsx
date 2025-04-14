@@ -11,6 +11,19 @@ const CTA = () => {
       className="w-full py-16 md:py-24 lg:py-32 relative overflow-hidden"
       aria-labelledby="cta-heading"
     >
+      {/* Filtro gris con mensaje de próximamente */}
+      <div className="absolute inset-0 z-20 bg-gray-300/70 backdrop-blur-sm flex flex-col items-center justify-center">
+        <div className="bg-white p-4 md:p-8 rounded-xl shadow-xl">
+          <h3 className="text-2xl md:text-3xl font-bold text-center gradient-text">
+            Próximamente
+          </h3>
+          <p className="mt-2 text-gray-600 text-center max-w-md">
+            Estamos trabajando en nuevas funcionalidades. ¡Pronto podrás
+            registrarte y disfrutar de todas las ventajas!
+          </p>
+        </div>
+      </div>
+
       <div
         className="absolute inset-0 bg-gradient-to-br from-pastel-purple/10 via-pastel-pink/10 to-pastel-blue/10"
         aria-hidden="true"
@@ -20,7 +33,7 @@ const CTA = () => {
         <div className="absolute bottom-20 left-10 w-72 h-72 bg-pastel-yellow/20 rounded-full mix-blend-multiply filter blur-xl opacity-70 animate-blob animation-delay-2000"></div>
       </div>
 
-      <div className="container mx-auto px-4 relative z-10">
+      <div className="container mx-auto px-4 relative z-10 opacity-60">
         <div className="max-w-4xl mx-auto bg-white dark:bg-gray-800 rounded-2xl shadow-xl p-8 md:p-12 border border-white/50 dark:border-gray-700/50">
           <motion.div
             initial={{ opacity: 0, y: 20 }}

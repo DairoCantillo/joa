@@ -15,13 +15,26 @@ export default function Pricing() {
       className="w-full py-16 md:py-24 lg:py-32 relative overflow-hidden"
       aria-labelledby="pricing-heading"
     >
+      {/* Filtro gris con mensaje de próximamente */}
+      <div className="absolute inset-0 z-20 bg-gray-300/70 backdrop-blur-sm flex flex-col items-center justify-center">
+        <div className="bg-white p-4 md:p-8 rounded-xl shadow-xl">
+          <h3 className="text-2xl md:text-3xl font-bold text-center gradient-text">
+            Próximamente
+          </h3>
+          <p className="mt-2 text-gray-600 text-center max-w-md">
+            Nuestros planes de precios estarán disponibles muy pronto. ¡Estamos
+            trabajando para ofrecerte las mejores opciones!
+          </p>
+        </div>
+      </div>
+
       <div className="absolute inset-0 -z-10" aria-hidden="true">
         <div className="absolute top-20 left-10 w-72 h-72 bg-pastel-yellow/20 rounded-full mix-blend-multiply filter blur-xl opacity-70 animate-blob"></div>
         <div className="absolute top-40 right-10 w-72 h-72 bg-pastel-purple/20 rounded-full mix-blend-multiply filter blur-xl opacity-70 animate-blob animation-delay-2000"></div>
         <div className="absolute bottom-20 left-1/3 w-72 h-72 bg-pastel-pink/20 rounded-full mix-blend-multiply filter blur-xl opacity-70 animate-blob animation-delay-4000"></div>
       </div>
 
-      <div className="container mx-auto px-4 relative z-10">
+      <div className="container mx-auto px-4 relative z-10 opacity-60">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
