@@ -8,6 +8,7 @@ export const RESERVED_ROUTES = [
   'features',
   'faq',
   'contact',
+  '',
 ];
 
 export const Routes = {
