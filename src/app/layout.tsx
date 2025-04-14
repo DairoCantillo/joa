@@ -13,6 +13,11 @@ export const metadata: Metadata = {
   title: 'Acortar URLs de forma fácil y rápida | JOA',
   description:
     'Acorta tus enlaces de forma rápida y sencilla con JOA. Únete a nuestra comunidad y comienza a compartir tus URLs acortadas hoy mismo.',
+  icons: {
+    icon: '/images/logo.png',
+    shortcut: '/images/logo.png',
+    apple: '/images/logo.png',
+  },
 };
 
 export default function RootLayout({

@@ -1,19 +1,22 @@
 import Link from 'next/link';
-import { apiConfig } from '@/constants/apiEndpoints';
 import ThemeToggle from '@/components/ui/ThemeToggle';
+// Importar Image de Next.js para optimización de imágenes
+import Image from 'next/image';
 
 export default function Header() {
   return (
     <header className="sticky top-0 z-50 w-full border-b bg-white/80 dark:bg-gray-900/95 backdrop-blur-sm">
       <div className="container mx-auto flex h-16 items-center justify-between px-4">
         <div className="flex items-center gap-2">
-          <Link
-            href="/"
-            aria-label={`${apiConfig.hostname || 'Joa'} - Página de inicio`}
-          >
-            <span className="text-xl font-bold gradient-text animate-pulse-slow">
-              Joa.pro
-            </span>
+          <Link href="/" className="flex items-center">
+            <Image
+              src="/images/logo.png"
+              alt="Joa Logo"
+              width={60}
+              height={60}
+              className="mr-2"
+            />
+            <span className="font-bold text-2xl gradient-text">Joa</span>
           </Link>
         </div>
         <nav aria-label="Navegación principal">

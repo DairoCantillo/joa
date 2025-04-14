@@ -29,7 +29,7 @@ export function generateMetadata({
   title = 'Joa - Acortador de URLs',
   description = 'Administra, rastrea y optimiza tus enlaces con nuestra plataforma.',
   url = 'https://joa.pro',
-  image = 'https://joa.pro/images/og-image.png',
+  image = 'https://joa.pro/images/logo.png',
   type = 'website',
 }: SeoProps = {}): Metadata {
   return {
