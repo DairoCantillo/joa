@@ -17,6 +17,7 @@ export default function PricingCard({
   color = 'purple',
   index,
 }: PricingCardProps) {
+  // Usamos mapeos directos en lugar de condicionales para el manejo de colores
   const colorClasses = {
     purple: 'from-pastel-purple to-pastel-purple/70',
     pink: 'from-pastel-pink to-pastel-pink/70',
@@ -28,15 +29,14 @@ export default function PricingCard({
     pink: 'text-pastel-pink',
     blue: 'text-pastel-blue',
   };
-  //chambonada, toca mejorarlo despues
-  let colorAsign: string;
-  if (color === 'purple') {
-    colorAsign = 'pastel-purple';
-  } else if (color === 'pink') {
-    colorAsign = 'pastel-pink';
-  } else {
-    colorAsign = 'pastel-blue';
-  }
+
+  const colorMap = {
+    purple: 'pastel-purple',
+    pink: 'pastel-pink',
+    blue: 'pastel-blue',
+  };
+
+  const colorAssign = colorMap[color];
 
   return (
     <motion.article
@@ -65,7 +65,7 @@ export default function PricingCard({
         <header className="p-6">
           <div className="flex items-center gap-2">
             <div
-              className={`p-2 rounded-full bg-${colorAsign}/10`}
+              className={`p-2 rounded-full bg-${colorAssign}/10`}
               aria-hidden="true"
             >
               {icon}
@@ -87,8 +87,8 @@ export default function PricingCard({
             className="space-y-3 text-sm"
             aria-label={`Características del plan ${name}`}
           >
-            {features.map((feature) => (
-              <li key={feature.text} className="flex items-center">
+            {features.map((feature, idx) => (
+              <li key={`${name}-feature-${idx}`} className="flex items-center">
                 {feature.included ? (
                   <Check
                     className={`mr-2 h-4 w-4 ${colorText[color]}`}
@@ -119,8 +119,8 @@ export default function PricingCard({
             className={`w-full py-3 px-4 rounded-xl transition-all ${
               popular
                 ? 'bg-gradient-to-r from-pastel-purple to-pastel-pink text-white shadow-md hover:shadow-lg'
-                : `bg-${colorAsign}/10 ${colorText[color]} hover:bg-${colorAsign}/20`
-            } focus:outline-none focus:ring-2 focus:ring-${colorAsign} focus:ring-offset-2 inline-block text-center`}
+                : `bg-${colorAssign}/10 ${colorText[color]} hover:bg-${colorAssign}/20`
+            } focus:outline-none focus:ring-2 focus:ring-${colorAssign} focus:ring-offset-2 inline-block text-center`}
           >
             Comenzar
           </a>

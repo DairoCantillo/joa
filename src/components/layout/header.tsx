@@ -1,5 +1,4 @@
 import Link from 'next/link';
-import { LinkIcon } from '@heroicons/react/24/outline';
 import { apiConfig } from '@/constants/apiEndpoints';
 
 export default function Header() {
@@ -11,10 +10,6 @@ export default function Header() {
             href="/"
             aria-label={`${apiConfig.hostname || 'Joa'} - Página de inicio`}
           >
-            <LinkIcon
-              className="h-6 w-6 text-pastel-purple"
-              aria-hidden="true"
-            />
             <span className="text-xl font-bold gradient-text animate-pulse-slow">
               Joa.pro
             </span>
@@ -49,11 +44,14 @@ export default function Header() {
           </ul>
         </nav>
         <div className="flex items-center gap-4">
-          <Link href="/login" className="text-sm font-medium gradient-nav-item">
+          <Link
+            href="/auth/login"
+            className="all-initial text-sm font-medium gradient-nav-item"
+          >
             Iniciar Sesión
           </Link>
           <Link
-            href="/register"
+            href="/auth/register"
             className="rounded-md bg-gradient-to-r from-pastel-purple to-pastel-pink px-4 py-2 text-sm font-medium text-white hover:opacity-90 focus:outline-none focus:ring-2 focus:ring-pastel-purple focus:ring-offset-2 transition-all"
           >
             Registrarse Gratis

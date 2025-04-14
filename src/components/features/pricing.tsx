@@ -1,7 +1,7 @@
 'use client';
 
 import { useState } from 'react';
-import PricingCard from './pricing-card';
+import PricingCard from '@/components/ui/pricing-card';
 import { motion } from 'framer-motion';
 import { SparklesIcon, ArrowRightIcon } from '@heroicons/react/24/outline';
 import { plans } from '@/constants/texts';
@@ -91,6 +91,7 @@ export default function Pricing() {
               <li key={plan.name}>
                 <PricingCard
                   name={plan.name}
+                  title={plan.name}
                   icon={plan.icon}
                   price={plan.price}
                   period={plan.period}

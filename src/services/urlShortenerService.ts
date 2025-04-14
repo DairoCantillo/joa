@@ -1,27 +1,46 @@
-import { apiConfig } from '@/constants/apiEndpoints';
-import axios, { Axios } from 'axios';
+import ApiClient from '@/services/api/apiClient';
+
+interface ShortUrlResponse {
+  url: string;
+  shortUrl: string;
+  createdAt: string;
+  clicks: number;
+}
+
+interface UrlStats {
+  totalClicks: number;
+  clicksPerDay: {
+    date: string;
+    count: number;
+  }[];
+  browsers?: {
+    name: string;
+    count: number;
+  }[];
+  platforms?: {
+    name: string;
+    count: number;
+  }[];
+  countries?: {
+    name: string;
+    count: number;
+  }[];
+}
 
 class UrlShortenerService {
-  private static apiBaseUrl: string = apiConfig.baseUrl;
-
-  constructor(apiBaseUrl: string = apiConfig.baseUrl) {
-    UrlShortenerService.apiBaseUrl = apiBaseUrl;
-  }
-
   static async registerUrl(
     url: string,
     shortUrl: string,
-  ): Promise<Axios | null> {
+  ): Promise<ShortUrlResponse | null> {
     try {
-      const response = await axios.post(`${this.apiBaseUrl}/shorturls`, {
+      return await ApiClient.post<
+        ShortUrlResponse,
+        { url: string; shortUrl: string }
+      >('/shorturls', {
         url,
         shortUrl,
       });
-      if (response.data) {
-        return response.data;
-      }
-      return null;
-    } catch (error) {
+    } catch (error: unknown) {
       console.error('Error en registerUrl:', error);
       throw error;
     }
@@ -29,16 +48,41 @@ class UrlShortenerService {
 
   static async getUrl(shortUrl: string): Promise<string | null> {
     try {
-      const response = await axios.get(
-        `${this.apiBaseUrl}/shorturls/${shortUrl}`,
+      const response = await ApiClient.get<ShortUrlResponse>(
+        `/shorturls/${shortUrl}`,
       );
-      if (response.data) {
-        return response.data.url;
-      }
-      return null;
-    } catch (error) {
+      return response.url;
+    } catch (error: unknown) {
       console.error('Error en getUrl:', error);
       throw error;
+    }
+  }
+
+  static async getUserUrls(): Promise<ShortUrlResponse[]> {
+    try {
+      return await ApiClient.get<ShortUrlResponse[]>('/shorturls/user');
+    } catch (error: unknown) {
+      console.error('Error en getUserUrls:', error);
+      return [];
+    }
+  }
+
+  static async deleteUrl(shortUrl: string): Promise<boolean> {
+    try {
+      await ApiClient.delete<void>(`/shorturls/${shortUrl}`);
+      return true;
+    } catch (error: unknown) {
+      console.error('Error en deleteUrl:', error);
+      return false;
+    }
+  }
+
+  static async getUrlStats(shortUrl: string): Promise<UrlStats | null> {
+    try {
+      return await ApiClient.get<UrlStats>(`/shorturls/${shortUrl}/stats`);
+    } catch (error: unknown) {
+      console.error('Error en getUrlStats:', error);
+      return null;
     }
   }
 }

@@ -1,8 +1,7 @@
-export type FeatureCardProps = Readonly<{
+import { BaseCardProps, AppColor } from './common';
+
+export type FeatureCardProps = BaseCardProps & {
   icon: React.ReactNode;
-  title: string;
-  description: string;
   content: string;
-  color: 'purple' | 'pink' | 'blue' | 'mint' | 'yellow';
-  index: number;
-}>;
+  color: AppColor;
+};

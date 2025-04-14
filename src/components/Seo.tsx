@@ -1,43 +1,70 @@
-import Head from 'next/head';
+import { Metadata } from 'next';
 
 interface SeoProps {
-  title: string;
-  description: string;
-  url: string;
-  image: string;
-  type: string;
+  title?: string;
+  description?: string;
+  url?: string;
+  image?: string;
+  type?:
+    | 'website'
+    | 'article'
+    | 'book'
+    | 'profile'
+    | 'music.song'
+    | 'music.album'
+    | 'music.playlist'
+    | 'music.radio_station'
+    | 'video.movie'
+    | 'video.episode'
+    | 'video.tv_show'
+    | 'video.other';
 }
 
-const Seo = ({
-  title = 'Tu Plataforma de Enlaces',
+/**
+ * Genera metadatos para Next.js basados en las propiedades proporcionadas
+ * @param props Propiedades para los metadatos
+ * @returns Objeto Metadata para Next.js
+ */
+export function generateMetadata({
+  title = 'Joa - Acortador de URLs',
   description = 'Administra, rastrea y optimiza tus enlaces con nuestra plataforma.',
-  url = 'https://tu-sitio.com',
-  image = 'https://tu-sitio.com/images/default-preview.png',
+  url = 'https://joa.pro',
+  image = 'https://joa.pro/images/og-image.png',
   type = 'website',
-}: SeoProps) => {
-  return (
-    <Head>
-      {/* Título */}
-      <title>{title}</title>
-      <meta name="description" content={description} />
-
-      {/* Open Graph */}
-      <meta property="og:title" content={title} />
-      <meta property="og:description" content={description} />
-      <meta property="og:url" content={url} />
-      <meta property="og:image" content={image} />
-      <meta property="og:type" content={type} />
-
-      {/* Twitter Card */}
-      <meta name="twitter:card" content="summary_large_image" />
-      <meta name="twitter:title" content={title} />
-      <meta name="twitter:description" content={description} />
-      <meta name="twitter:image" content={image} />
-
-      {/* Canonical URL */}
-      <link rel="canonical" href={url} />
-    </Head>
-  );
-};
-
-export default Seo;
+}: SeoProps = {}): Metadata {
+  return {
+    title,
+    description,
+    metadataBase: new URL(url),
+    alternates: {
+      canonical: '/',
+    },
+    openGraph: {
+      title,
+      description,
+      url,
+      siteName: 'Joa - Acortador de URLs',
+      images: [
+        {
+          url: image,
+          width: 1200,
+          height: 630,
+          alt: title,
+        },
+      ],
+      locale: 'es_ES',
+      type,
+    },
+    twitter: {
+      card: 'summary_large_image',
+      title,
+      description,
+      images: [image],
+      creator: '@joa',
+    },
+    robots: {
+      index: true,
+      follow: true,
+    },
+  };
+}

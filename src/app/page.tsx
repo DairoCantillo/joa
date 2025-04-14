@@ -1,10 +1,10 @@
-import Header from '../components/header';
-import UrlShortener from '../components/url-shortener';
-import HeroSection from '../components/hero';
-import Features from '../components/features';
-import Pricing from '../components/pricing';
-import CallToAction from '../components/cta';
-import Footer from '../components/footer';
+import Header from '@/components/layout/header';
+import UrlShortener from '@/components/features/url-shortener';
+import HeroSection from '@/components/features/hero';
+import Features from '@/components/features/features';
+import Pricing from '@/components/features/pricing';
+import CallToAction from '@/components/features/cta';
+import Footer from '@/components/layout/footer';
 
 export default function UrlShortenerLanding() {
   return (

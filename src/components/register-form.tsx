@@ -1,28 +1,40 @@
 'use client';
 
-import type React from 'react';
-
 import { useState } from 'react';
+import { useRouter } from 'next/navigation';
+import AuthService, { AuthError } from '@/services/authService';
+import { Routes } from '@/constants/routes';
 
 export default function RegisterForm() {
+  const router = useRouter();
   const [isLoading, setIsLoading] = useState(false);
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const [error, setError] = useState<string | null>(null);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setIsLoading(true);
+    setError(null);
 
-    // Esto se conectaría a tu servicio de registro real
     try {
-      // Simulación de llamada a API
-      await new Promise((resolve) => setTimeout(resolve, 1000));
-      console.log('Registro con:', { name, email, password });
-      // Redirección al dashboard después de un registro exitoso
-      window.location.href = '/dashboard';
+      const success = await AuthService.register(name, email, password);
+      if (success) {
+        // Redirección al dashboard después de un registro exitoso
+        router.push(Routes.DASHBOARD.ROOT);
+      } else {
+        setError(
+          'No se pudo completar el registro. Por favor, intenta de nuevo.',
+        );
+      }
     } catch (error) {
       console.error('Error al registrarse:', error);
+      setError(
+        error instanceof AuthError
+          ? error.message
+          : 'Ha ocurrido un error al registrarse. Por favor, inténtalo de nuevo.',
+      );
     } finally {
       setIsLoading(false);
     }
@@ -30,22 +42,28 @@ export default function RegisterForm() {
 
   const handleGoogleSignIn = async () => {
     setIsLoading(true);
+    setError(null);
 
-    // Esto se conectaría a tu servicio de autenticación de Google real
     try {
-      // Simulación de llamada a API
-      await new Promise((resolve) => setTimeout(resolve, 1000));
-      console.log('Inicio de sesión con Google iniciado');
-      // La redirección ocurriría después del flujo de OAuth
+      await AuthService.loginWithGoogle();
+      // La redirección ocurre automáticamente en el método loginWithGoogle
     } catch (error) {
       console.error('Error al iniciar sesión con Google:', error);
-    } finally {
+      setError(
+        'Error al iniciar sesión con Google. Por favor, inténtalo de nuevo.',
+      );
       setIsLoading(false);
     }
   };
 
   return (
     <div className="grid gap-6">
+      {error && (
+        <div className="p-3 rounded-md bg-red-50 border border-red-200 text-red-600 text-sm">
+          {error}
+        </div>
+      )}
+
       <form onSubmit={handleSubmit}>
         <div className="grid gap-4">
           <div className="grid gap-2">
@@ -91,7 +109,11 @@ export default function RegisterForm() {
               value={password}
               onChange={(e) => setPassword(e.target.value)}
               required
+              minLength={8}
             />
+            <p className="text-xs text-gray-500">
+              La contraseña debe tener al menos 8 caracteres
+            </p>
           </div>
           <button
             type="submit"

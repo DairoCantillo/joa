@@ -13,63 +13,32 @@ import {
   ArrowLeft,
 } from 'lucide-react';
 import Image from 'next/image';
-import { generateShortUrl } from '@/utils/urlUtils';
-import UrlShortenerService from '@/services/urlShortenerService';
 import { apiConfig } from '@/constants/apiEndpoints';
+import { useUrlShortener } from '@/hooks/useUrlShortener';
 
 export default function UrlShortener() {
   const [activeTab, setActiveTab] = useState('standard');
-  const [url, setUrl] = useState('');
-  const [customShortUrl, setCustomShortUrl] = useState('');
-  const [shortenedUrl, setShortenedUrl] = useState('');
-  const [copied, setCopied] = useState(false);
-  const [isLoading, setIsLoading] = useState(false);
+  const {
+    url,
+    setUrl,
+    customShortUrl,
+    setCustomShortUrl,
+    shortenedUrl,
+    isLoading,
+    copied,
+    shortenUrl,
+    copyToClipboard,
+    resetState,
+  } = useUrlShortener();
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    try {
-      setIsLoading(true);
-      const tokenUrl = generateShortUrl();
-      const response = await UrlShortenerService.registerUrl(url, tokenUrl);
-      if (response) {
-        setShortenedUrl(tokenUrl);
-        setIsLoading(false);
-      }
-    } catch (error) {
-      setIsLoading(false);
-      console.error('Error al acortar la URL:', error);
-    }
+    await shortenUrl(false);
   };
 
   const handleCustomSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    try {
-      setIsLoading(true);
-      const response = await UrlShortenerService.registerUrl(
-        url,
-        customShortUrl,
-      );
-      if (response) {
-        setShortenedUrl(customShortUrl);
-        setIsLoading(false);
-      }
-    } catch (error) {
-      setIsLoading(false);
-      console.error('Error al acortar la URL:', error);
-    }
-  };
-
-  const copyToClipboard = () => {
-    navigator.clipboard.writeText(`${apiConfig.hostname}/${shortenedUrl}`);
-    setCopied(true);
-    setTimeout(() => setCopied(false), 2000);
-  };
-  const resetState = () => {
-    setUrl('');
-    setCustomShortUrl('');
-    setShortenedUrl('');
-    setCopied(false);
-    setIsLoading(false);
+    await shortenUrl(true);
   };
 
   return (
@@ -207,7 +176,7 @@ export default function UrlShortener() {
                       placeholder="https://ejemplo.com/pega-aqui-tu-enlace-super-largo-que-quieres-acortar"
                       value={url}
                       onChange={(e) => setUrl(e.target.value)}
-                      className="w-full px-4 py-4 pr-36 border border-gray-200 dark:border-gray-700 rounded-xl focus:outline-none focus:ring-2 focus:ring-pastel-purple/50 bg-white text-white dark:bg-gray-800 transition-all duration-200"
+                      className="w-full px-4 py-4 pr-36 border border-gray-200 dark:border-gray-700 rounded-xl focus:outline-none focus:ring-2 focus:ring-pastel-purple/50 bg-white text-gray-800 dark:bg-gray-800 dark:text-white transition-all duration-200"
                       required
                     />
                     <button
@@ -253,7 +222,7 @@ export default function UrlShortener() {
                       placeholder="https://ejemplo.com/pega-aqui-tu-enlace-super-largo"
                       value={url}
                       onChange={(e) => setUrl(e.target.value)}
-                      className="w-full px-4 py-3 border border-gray-200 dark:border-gray-700 rounded-xl focus:outline-none focus:ring-2 focus:ring-pastel-purple/50 bg-white text-white dark:bg-gray-800 transition-all duration-200"
+                      className="w-full px-4 py-3 border border-gray-200 dark:border-gray-700 rounded-xl focus:outline-none focus:ring-2 focus:ring-pastel-purple/50 bg-white text-gray-800 dark:bg-gray-800 dark:text-white transition-all duration-200"
                       required
                     />
                   </div>
@@ -274,7 +243,7 @@ export default function UrlShortener() {
                         placeholder="mi-super-enlace"
                         value={customShortUrl}
                         onChange={(e) => setCustomShortUrl(e.target.value)}
-                        className="flex-1 px-4 py-3 border border-gray-200 dark:border-gray-700 rounded-r-xl focus:outline-none focus:ring-2 focus:ring-pastel-purple/50 bg-white text-white dark:bg-gray-800 transition-all duration-200"
+                        className="flex-1 px-4 py-3 border border-gray-200 dark:border-gray-700 rounded-r-xl focus:outline-none focus:ring-2 focus:ring-pastel-purple/50 bg-white text-gray-800 dark:bg-gray-800 dark:text-white transition-all duration-200"
                         required
                       />
                     </div>
@@ -310,9 +279,9 @@ export default function UrlShortener() {
                 transition={{ duration: 0.3 }}
                 className="mt-6 rounded-xl border border-pastel-mint/30 p-4 bg-gradient-to-r from-pastel-mint/10 to-pastel-blue/10"
               >
-                <output
+                <div
                   className="flex items-center justify-between"
-                  aria-atomic="true"
+                  aria-live="polite"
                 >
                   <div className="flex items-center gap-2">
                     <div
@@ -346,9 +315,9 @@ export default function UrlShortener() {
                       />
                     )}
                   </button>
-                </output>
+                </div>
                 <a
-                  href={shortenedUrl}
+                  href={`${apiConfig.hostname}/${shortenedUrl}`}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="mt-2 block truncate font-medium text-lg hover:underline text-pastel-purple"

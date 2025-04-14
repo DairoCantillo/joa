@@ -52,7 +52,7 @@ const CTA = () => {
 
             <div className="flex flex-col sm:flex-row gap-4 mt-4 w-full max-w-md">
               <motion.a
-                href="/register"
+                href="/auth/register"
                 whileHover={{ scale: 1.03 }}
                 whileTap={{ scale: 0.98 }}
                 className="flex-1 rounded-xl bg-gradient-to-r from-pastel-purple to-pastel-pink px-6 py-4 text-sm font-medium text-white hover:opacity-90 focus:outline-none focus:ring-2 focus:ring-pastel-purple focus:ring-offset-2 shadow-md text-center"

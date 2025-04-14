@@ -1,7 +1,7 @@
 'use client';
 
 import { features } from '@/constants/texts';
-import FeatureCard from './feature-card';
+import FeatureCard from '@/components/ui/feature-card';
 import { motion } from 'framer-motion';
 import { StarIcon } from '@heroicons/react/24/solid';
 

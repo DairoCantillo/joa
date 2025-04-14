@@ -1,15 +1,16 @@
 import Link from 'next/link';
 import type { Metadata } from 'next';
-import RegisterForm from '@/components/register-form';
+import LoginForm from '@/components/login-form';
 import { LinkIcon } from '@heroicons/react/24/outline';
 import { apiConfig } from '@/constants/apiEndpoints';
 
 export const metadata: Metadata = {
-  title: 'Registro | JOA',
-  description: 'Crea una nueva cuenta en JOA para comenzar a acortar URLs',
+  title: 'Iniciar Sesión | JOA',
+  description:
+    'Inicia sesión en tu cuenta de JOA para gestionar tus URLs acortadas',
 };
 
-export default function RegisterPage() {
+export default function LoginPage() {
   return (
     <div className="flex min-h-screen flex-col">
       <div className="flex flex-1 items-center justify-center py-12">
@@ -22,21 +23,21 @@ export default function RegisterPage() {
               </Link>
             </div>
             <h1 className="text-2xl font-bold tracking-tight">
-              Crear una cuenta
+              Bienvenido de nuevo
             </h1>
             <p className="text-muted-foreground">
-              Ingresa tus datos para comenzar
+              Inicia sesión en tu cuenta para continuar
             </p>
           </div>
-          <RegisterForm />
+          <LoginForm />
           <div className="mt-4 text-center text-sm">
             <p className="text-muted-foreground">
-              ¿Ya tienes una cuenta?{' '}
+              ¿No tienes una cuenta?{' '}
               <Link
-                href="/login"
+                href="/auth/register"
                 className="font-medium text-primary hover:underline"
               >
-                Inicia sesión
+                Regístrate
               </Link>
             </p>
           </div>

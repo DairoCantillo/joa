@@ -1,14 +1,18 @@
-export type PricingCardProps = Readonly<{
+import { BaseCardProps } from './common';
+
+export type PricingColor = 'purple' | 'pink' | 'blue';
+
+export type Feature = {
+  included: boolean;
+  text: string;
+};
+
+export type PricingCardProps = BaseCardProps & {
   name: string;
   icon: React.ReactNode;
   price: string;
   period: string;
-  description: string;
-  features: Array<{
-    included: boolean;
-    text: string;
-  }>;
+  features: Feature[];
   popular?: boolean;
-  color: 'purple' | 'pink' | 'blue';
-  index: number;
-}>;
+  color: PricingColor;
+};
