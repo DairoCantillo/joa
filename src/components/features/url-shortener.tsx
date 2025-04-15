@@ -317,7 +317,7 @@ export default function UrlShortener() {
                   </button>
                 </div>
                 <a
-                  href={`${apiConfig.hostname}/${shortenedUrl}`}
+                  href={`https://${apiConfig.hostname}/${shortenedUrl}`}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="mt-2 block truncate font-medium text-lg hover:underline text-pastel-purple"
