@@ -1,3 +1,4 @@
+import { apiConfig } from '@/constants/apiEndpoints';
 import { Metadata } from 'next';
 
 interface SeoProps {
@@ -28,14 +29,19 @@ interface SeoProps {
 export function generateMetadata({
   title = 'Joa - Acortador de URLs',
   description = 'Administra, rastrea y optimiza tus enlaces con nuestra plataforma.',
-  url = 'https://joa.pro',
-  image = 'https://joa.pro/images/logo.png',
+  url = apiConfig.hostname,
+  image = '/images/logo.png',
   type = 'website',
 }: SeoProps = {}): Metadata {
   return {
+    icons: {
+      icon: image,
+      shortcut: image,
+      apple: image,
+    },
     title,
     description,
-    metadataBase: new URL(url),
+    metadataBase: new URL(`https://${apiConfig.hostname}`),
     alternates: {
       canonical: '/',
     },
