@@ -1,4 +1,4 @@
-# 🌐 Joa.io - Acortador de URLs Moderno 🚀
+# 🌐 Joa- Acortador de URLs Moderno 🚀
 
 [![TypeScript](https://img.shields.io/badge/TypeScript-4.9.5-blue.svg)](https://www.typescriptlang.org/)
 [![Next.js](https://img.shields.io/badge/Next.js-14.0.0-black.svg)](https://nextjs.org/)
